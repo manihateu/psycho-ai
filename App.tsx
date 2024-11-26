@@ -5,7 +5,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { ChatScreen } from './screens/ChatScreen/ChatScreen';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { Provider } from 'react-redux';
-import { store } from './store/api/store';
+import { store } from './store/store';
 
 const Stack = createNativeStackNavigator();
 
