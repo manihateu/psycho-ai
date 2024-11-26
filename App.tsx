@@ -9,15 +9,12 @@ import { SafeAreaView } from 'react-native';
 
 export default function App() {
   return (
-    
     <Provider store={store}>
-      {/* <GestureHandlerRootView style={{flex: 1}}> */}
+      <GestureHandlerRootView style={{flex: 1}}>
         <NavigationContainer>
-          
             <RootNavigator/>
-         
         </NavigationContainer>
-      {/* </GestureHandlerRootView> */}
+      </GestureHandlerRootView>
     </Provider>
   );
 }
