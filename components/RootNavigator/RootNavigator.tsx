@@ -6,6 +6,7 @@ const Stack = createNativeStackNavigator();
 export const RootNavigator = () => {
     return (
         <Stack.Navigator>
+            
             {private_routes.map((route) => 
                 <Stack.Screen key={route.name}
                     name={route.name}
