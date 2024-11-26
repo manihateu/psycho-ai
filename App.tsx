@@ -4,16 +4,20 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { Provider } from 'react-redux';
 import { store } from './store/store';
 import { RootNavigator } from './components/RootNavigator/RootNavigator';
+import { SafeAreaView } from 'react-native';
 
 
 export default function App() {
   return (
+    
     <Provider store={store}>
-      <GestureHandlerRootView style={{flex: 1}}>
+      {/* <GestureHandlerRootView style={{flex: 1}}> */}
         <NavigationContainer>
-          <RootNavigator/>
+          
+            <RootNavigator/>
+         
         </NavigationContainer>
-      </GestureHandlerRootView>
+      {/* </GestureHandlerRootView> */}
     </Provider>
   );
 }

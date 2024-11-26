@@ -7,7 +7,7 @@ export const RootNavigator = () => {
     return (
         <Stack.Navigator>
             {private_routes.map((route) => 
-                <Stack.Screen 
+                <Stack.Screen key={route.name}
                     name={route.name}
                     component={route.component}
                     options={{headerShown: false}}
