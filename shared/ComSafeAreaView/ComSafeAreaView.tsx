@@ -4,7 +4,7 @@ import { SafeAreaView } from 'react-native'
 
 type TComSafeAreaViewProps = {
   children: React.ReactNode,
-  style?: StyleProp <ViewProps>
+  style?: StyleProp<ViewProps>
 }
 
 const ComSafeAreaView = ({children, style} : TComSafeAreaViewProps) => {

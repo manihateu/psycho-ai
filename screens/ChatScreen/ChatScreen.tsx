@@ -12,14 +12,9 @@ export const ChatScreen = () => {
     const navigation = useNavigation <StackNavigation> ()
     
     return (
-        <Layout name='Ментальный помощник'>
-            
-                
-                <ComButton onPress={() => {navigation.navigate("OnboardingScreen")}} title="начнем" variant="secondary"/>
-                <ComInput placeholder="Google" isPassword onChange={(Text) => {setValue(Text)}} value={value}/>
-            
-            
-            
+        <Layout name='Ментальный помощник'>  
+                <ComButton onPress={() => {navigation.navigate("OnboardingScreen")}} title="начнем" variant="primary"/>
+                <ComInput placeholder="Google" onChange={(Text) => {setValue(Text)}} value={value}/>
         </Layout>
         
     )
