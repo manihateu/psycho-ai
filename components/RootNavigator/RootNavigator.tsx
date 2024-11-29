@@ -1,7 +1,14 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { private_routes } from "./Routes";
+import { NavigationProp } from "@react-navigation/native";
 
-const Stack = createNativeStackNavigator();
+export type ScreenNames = 
+    typeof private_routes[number]["name"]
+
+export type RootStackParamList = Record<ScreenNames[number], undefined>;
+export type StackNavigation = NavigationProp<RootStackParamList>;
+
+const Stack = createNativeStackNavigator <RootStackParamList> ();
 
 export const RootNavigator = () => {
     return (
