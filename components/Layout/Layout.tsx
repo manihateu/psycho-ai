@@ -11,11 +11,10 @@ import Home from '../../assets/Home.svg'
 
 type TLayoutProps = {
     children: any,
-    name: string,
     canBack?: boolean,
 }
 
-const Layout = ({children, name, canBack} : TLayoutProps) => {
+const Layout = ({children, canBack} : TLayoutProps) => {
   return (
     <ComSafeAreaView style={{backgroundColor: 'White'}}>
         <View className='w-full flex p-3 flex-row gap-x-[8px] items-center justify-center'>
