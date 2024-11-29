@@ -1,5 +1,5 @@
 import React from 'react'
-import ComSafeAreaView from '../ComSafeAreaView/ComSafeAreaView'
+import ComSafeAreaView from '../../shared/ComSafeAreaView/ComSafeAreaView'
 import { Text, View } from 'react-native'
 
 type TLayoutProps = {
