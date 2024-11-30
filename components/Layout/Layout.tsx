@@ -16,7 +16,7 @@ type TLayoutProps = {
 
 const Layout = ({children, canBack} : TLayoutProps) => {
   return (
-    <ComSafeAreaView style={{backgroundColor: 'White'}}>
+    <ComSafeAreaView style={{backgroundColor: '#fff'}}>
         <View className='w-full flex p-3 flex-row gap-x-[8px] items-center justify-center'>
             <Text className='font-Comfortaa min-w-[75]'>Ментальный</Text>
             <Logo width={30} height={30}/>
@@ -27,23 +27,23 @@ const Layout = ({children, canBack} : TLayoutProps) => {
         </View>
         <View className='bg-white flex flex-row py-3 justify-around'>
             <View className='flex items-center gap-y-[8px] min-w-[70px]'>
-                <Home width={30} heigth={30}/>
+                <Home width={30} height={30}/>
                 <Text className='font-Comfortaa text-[#A0A3B1] '>Главная</Text>
             </View>
             <View className='flex items-center gap-y-[8px] min-w-[70px]'>
-                <Loon width={30} heigth={30}/>
+                <Loon width={30} height={30}/>
                 <Text className='font-Comfortaa text-[#A0A3B1]'>Сон</Text>
             </View>
             <View className='flex items-center gap-y-[8px] min-w-[70px]'>
-                <LogoBtn width={30} heigth={30}/>
+                <LogoBtn width={30} height={30}/>
                 <Text className='font-Comfortaa text-[#A0A3B1]'>Помощник</Text>
             </View>
             <View className='flex items-center gap-y-[8px] min-w-[70px]'>
-                <Music width={30} heigth={30}/>
+                <Music width={30} height={30}/>
                 <Text className='font-Comfortaa text-[#A0A3B1]'>Музыка</Text>
             </View>
             <View className='flex items-center gap-y-[8px] min-w-[70px]'>
-                <Profile width={30} heigth={30}/>
+                <Profile width={30} height={30}/>
                 <Text className='font-Comfortaa text-[#A0A3B1]'>Профиль</Text>
             </View>
         </View>
