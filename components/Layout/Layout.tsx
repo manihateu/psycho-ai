@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import ComSafeAreaView from '../../shared/ComSafeAreaView/ComSafeAreaView'
-import { Text, View } from 'react-native'
+import { StatusBar, Text, View } from 'react-native'
 import Logo from '../../assets/logo.svg'
 import LogoBtn from '../../assets/LogoBtn.svg'
 import Profile from '../../assets/Profile.svg'
@@ -15,6 +15,9 @@ type TLayoutProps = {
 }
 
 const Layout = ({children, canBack} : TLayoutProps) => {
+    useEffect(() => {
+        StatusBar.setBackgroundColor("#FFFFFF", true) 
+    }, [])
   return (
     <ComSafeAreaView style={{backgroundColor: '#fff'}}>
         <View className='w-full flex p-3 flex-row gap-x-[8px] items-center justify-center'>
