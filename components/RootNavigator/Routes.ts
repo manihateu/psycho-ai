@@ -1,4 +1,4 @@
-import { ChatScreen } from "../../screens/ChatScreen/ChatScreen";
+import HomeLayout from "../../screens/HomeLayout/HomeLayout";
 import LoginScreen from "../../screens/LoginScreen/LoginScreen";
 import OnboardingScreen from "../../screens/OnboardingScreen/OnboardingScreen";
 import SignUpScreen from "../../screens/SignUpScreen/SignUpScreen";
@@ -30,7 +30,7 @@ export const public_routes: TRoute[] = [
 
 export const private_routes: TRoute[] = [
     {
-        name: "ChatScreen",
-        component: ChatScreen
+        name: "HomeLayout",
+        component: HomeLayout
     },
 ]
