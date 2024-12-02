@@ -11,7 +11,7 @@ export type StackNavigation = NavigationProp<RootStackParamList>;
 const Stack = createNativeStackNavigator <RootStackParamList> ();
 
 export const RootNavigator = () => {
-    const isAuth = true
+    const isAuth = false
     return (
         <Stack.Navigator>
             

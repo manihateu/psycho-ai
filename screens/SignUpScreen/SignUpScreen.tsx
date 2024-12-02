@@ -8,6 +8,9 @@ import ComCheckbox from '../../shared/ComCheckbox/ComCheckbox'
 import Arrow from '../../assets/BackArrow.svg'
 import { useNavigation } from '@react-navigation/native'
 import { StackNavigation } from '../../components/RootNavigator/RootNavigator'
+import { Controller, useForm } from 'react-hook-form'
+import { zodResolver } from "@hookform/resolvers/zod";
+import { SignUpSchema, SignUpSchemaData } from './form.validation'
 
 const SignUpScreen = () => {
     const [checked, setChecked] = useState(false);
@@ -15,6 +18,13 @@ const SignUpScreen = () => {
     useEffect(() => {
         StatusBar.setBackgroundColor("#FFFFFF", true)
     }, [])
+
+    const {control, handleSubmit, formState: {errors, isLoading}, trigger} = useForm<SignUpSchemaData>({
+        resolver: zodResolver(SignUpSchema)
+    })
+
+    const onSubmit = handleSubmit(data => console.log(data));
+    console.log(errors)
   return (
     <ComSafeAreaView className='bg-white'>
         <TouchableOpacity onPress={goBack} className='absolute rounded-full border border-[1px] border-[#EBEAEC] w-[55px] h-[55px] z-[999] bg-white top-[20px] left-[20px] flex justify-center items-center'>
@@ -26,14 +36,81 @@ const SignUpScreen = () => {
             </ImageBackground>
         </View>
         <View className='px-[20px]'>
-            <ComInput placeholder='Имя' value="" onChange={() => {}} classNames='mt-5'/>
-            <ComInput placeholder='Email' value="" onChange={() => {}} classNames='mt-5'/>
-            <ComInput placeholder='Пароль' isPassword value="" onChange={() => {}} classNames='mt-5'/>
+        <Controller
+            control={control}
+            name="email"
+            render={({ field: { onChange, onBlur, value } }) => {
+                const hasError = Boolean(errors.email);
+                return (
+                <>
+                    <ComInput
+                    placeholder="Email"
+                    onChange={(text) => {
+                        console.log("Введенный email:", text);
+                        onChange(text); // Обновляем значение
+                        trigger("email"); // Запускаем проверку
+                      }}
+                    value={value}
+                    isAccepted={!hasError}
+                    classNames='mt-5'
+                    />
+                    {hasError && (
+                    <Text className='text-red-500 mt-2'>
+                        {errors.email?.message || "Некорректный email"}
+                    </Text>
+                    )}
+                </>
+                );
+            }}
+            />
+            <Controller
+                control={control}
+                rules={{
+                    required: true,
+                    onChange: () => {
+                        trigger("name")
+                    }
+                }}
+                render={({ field: { onChange, onBlur, value } }) => (
+                    <ComInput
+                      placeholder="Имя"
+                      onChange={onChange}
+                      value={value}
+                      classNames='mt-5'
+                    />
+                  )}
+                name="name"
+            />
+            <Controller
+                control={control}
+                rules={{
+                    required: true
+                }}
+                render={({ field: { onChange, onBlur, value } }) => (
+                    <ComInput
+                      placeholder="Пароль"
+                      onChange={onChange}
+                      value={value}
+                      classNames='mt-5'
+                      isPassword
+                    />
+                  )}
+                name="password"
+            />
             <View className='mt-[20px] flex flex-row justify-between'>
                 <Text className='font-Comfortaa'>Я прочитал(а) <Text className='text-[#7583CA]'>Правила использования</Text></Text>
-                <ComCheckbox checked={checked} setChecked={setChecked}/>
+                <Controller
+                    control={control}
+                    rules={{
+                        required: true
+                    }}
+                    render={({ field: { onChange, onBlur, value } }) => (
+                        <ComCheckbox checked={value} setChecked={onChange}/>
+                    )}
+                    name="checked"
+                />
             </View>
-            <ComButton title="Начнем!" className='mt-[30px]' size='medium' onPress={() => {navigate("WelcomeScreen")}}/>
+            <ComButton title="Начнем!" className='mt-[30px]' size='medium' onPress={onSubmit}/>
         </View>
         
     </ComSafeAreaView>

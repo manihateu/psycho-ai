@@ -14,10 +14,10 @@ type TComInputProps = {
 }
 
 const ComInput = ({placeholder, classNames, isPassword, isAccepted, value, onChange} : TComInputProps) => {
-    const [visible, setVisible] = useState <boolean> (false)
+    const [visible, setVisible] = useState <boolean> (true)
     return (
     <View className={`relative ${classNames}`}>
-        <TextInput onChange={onChange} secureTextEntry={isPassword ? visible : false} value={value} placeholder={placeholder} className='bg-[#F2F3F7] p-[20px] rounded-2xl font-Comfortaa'/>   
+        <TextInput onChangeText={onChange} secureTextEntry={isPassword ? visible : false} value={value} placeholder={placeholder} className='bg-[#F2F3F7] p-[20px] rounded-2xl font-Comfortaa'/>   
         <View className='absolute right-[20px] h-full flex justify-center '>
             {
                 (isAccepted && !isPassword) && <Accept width={24} height={24}/>
@@ -25,11 +25,11 @@ const ComInput = ({placeholder, classNames, isPassword, isAccepted, value, onCha
             {
                 isPassword && (visible ? 
                 <Pressable onPress={() => {setVisible(false)}}>
-                    <Visible width={24} height={24}/>
+                    <NoneVisible width={24} height={24}/> 
                 </Pressable>
                  : 
                  <Pressable onPress={() => {setVisible(true)}}>
-                    <NoneVisible width={24} height={24}/> 
+                    <Visible width={24} height={24}/>
                  </Pressable>)
             }     
         </View>

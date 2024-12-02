@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react'
 import ComSafeAreaView from '../../shared/ComSafeAreaView/ComSafeAreaView'
-import { StatusBar, Text, TouchableOpacity, View } from 'react-native'
+import { Dimensions, ImageBackground, StatusBar, Text, TouchableOpacity, View } from 'react-native'
 import Logo from '../../assets/logo.svg'
 import LogoBtn from '../../assets/LogoBtn.svg'
 import Profile from '../../assets/Profile.svg'
 import Music from '../../assets/Music.svg'
 import Svg, { Path } from 'react-native-svg'
-
+import LayoutBg from '../../assets/LayoutBg.png'
 
 type TLayoutProps = {
     children: any,
@@ -26,9 +26,9 @@ const Layout = ({children, canBack, selected, setSelectedPage} : TLayoutProps) =
             <Logo width={30} height={30}/>
             <Text className='font-Comfortaa min-w-[75px]'>Помощник</Text>
         </View>
-        <View className='flex-1 bg-white'>
+        <ImageBackground source={LayoutBg} className='flex-1 w-full bg-white'>
             {children}
-        </View>
+        </ImageBackground>
         <View className='bg-white flex flex-row py-3 justify-around'>
 
             <TouchableOpacity onPress={() => setSelectedPage(0)} disabled={selected == 0} className={`flex items-center justify-center gap-y-[5px] min-w-[70px]`}>
