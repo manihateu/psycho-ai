@@ -13,7 +13,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { SignUpSchema, SignUpSchemaData } from './form.validation'
 
 const SignUpScreen = () => {
-    const [checked, setChecked] = useState(false);
     const {goBack, navigate} = useNavigation<StackNavigation>()
     useEffect(() => {
         StatusBar.setBackgroundColor("#FFFFFF", true)
@@ -23,8 +22,15 @@ const SignUpScreen = () => {
         resolver: zodResolver(SignUpSchema)
     })
 
-    const onSubmit = handleSubmit(data => console.log(data));
+    const [isNameChaged, setIsNameChaged] = useState(false)
+    const [isEmailChaged, setIsEmailChaged] = useState(false)
+    const [isPasswordChaged, setPasswordChaged] = useState(false)
+
+
+    const onSubmit = handleSubmit(data => {console.log(data); navigate("WelcomeScreen")});
     console.log(errors)
+    console.log(isEmailChaged)
+
   return (
     <ComSafeAreaView className='bg-white'>
         <TouchableOpacity onPress={goBack} className='absolute rounded-full border border-[1px] border-[#EBEAEC] w-[55px] h-[55px] z-[999] bg-white top-[20px] left-[20px] flex justify-center items-center'>
@@ -46,11 +52,12 @@ const SignUpScreen = () => {
                     <ComInput
                     placeholder="Email"
                     onChange={(text) => {
+                        setIsEmailChaged(true);
                         onChange(text); 
                         trigger("email"); 
                       }}
                     value={value}
-                    isAccepted={!hasError}
+                    isAccepted={isEmailChaged ? !hasError : false}
                     classNames='mt-5'
                     />
                     {hasError && (
@@ -72,11 +79,12 @@ const SignUpScreen = () => {
                     <ComInput
                     placeholder="Имя"
                     onChange={(text) => {
+                        setIsNameChaged(true)
                         onChange(text); 
                         trigger("name"); 
                       }}
                     value={value}
-                    isAccepted={!hasError}
+                    isAccepted={isNameChaged ? !hasError : false}
                     classNames='mt-5'
                     />
                     {hasError && (
@@ -100,11 +108,12 @@ const SignUpScreen = () => {
                         <ComInput
                         placeholder="Пароль"
                         onChange={(text) => {
+                            setPasswordChaged(true)
                             onChange(text); 
                             trigger("password"); 
                           }}
                         value={value}
-                        isAccepted={!hasError}
+                        isAccepted={isPasswordChaged ? !hasError : false}
                         classNames='mt-5'
                         isPassword
                         />
