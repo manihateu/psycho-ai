@@ -6,18 +6,17 @@ import NoneVisible from '../../assets/isNoneVisible.svg'
 
 type TComInputProps = {
     placeholder: string,
-    className?: string,
+    classNames?: string,
     isPassword?: boolean,
     isAccepted?: boolean,
     value: string,
     onChange: (text: any) => void
 }
 
-const ComInput = ({placeholder, className, isPassword, isAccepted, value, onChange} : TComInputProps) => {
+const ComInput = ({placeholder, classNames, isPassword, isAccepted, value, onChange} : TComInputProps) => {
     const [visible, setVisible] = useState <boolean> (false)
-
     return (
-    <View className='relative'>
+    <View className={`relative ${classNames}`}>
         <TextInput onChange={onChange} secureTextEntry={isPassword ? visible : false} value={value} placeholder={placeholder} className='bg-[#F2F3F7] p-[20px] rounded-2xl font-Comfortaa'/>   
         <View className='absolute right-[20px] h-full flex justify-center '>
             {

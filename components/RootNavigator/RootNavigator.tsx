@@ -1,5 +1,5 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { private_routes } from "./Routes";
+import { private_routes, public_routes } from "./Routes";
 import { NavigationProp } from "@react-navigation/native";
 
 export type ScreenNames = 
@@ -11,16 +11,29 @@ export type StackNavigation = NavigationProp<RootStackParamList>;
 const Stack = createNativeStackNavigator <RootStackParamList> ();
 
 export const RootNavigator = () => {
+    const isAuth = false
     return (
         <Stack.Navigator>
             
-            {private_routes.map((route) => 
-                <Stack.Screen key={route.name}
-                    name={route.name}
-                    component={route.component}
-                    options={{headerShown: false}}
-                />
-            )}
+            {isAuth ? 
+                private_routes.map((route) => 
+                    <Stack.Screen 
+                        key={route.name}
+                        name={route.name}
+                        component={route.component}
+                        options={{headerShown: false}}
+                    />
+                ) 
+                :
+                public_routes.map((route) => 
+                    <Stack.Screen 
+                        key={route.name}
+                        name={route.name}
+                        component={route.component} 
+                        options={{headerShown: false}}
+                    />
+                ) 
+            }
             
         </Stack.Navigator>
     )

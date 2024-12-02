@@ -5155,6 +5155,11 @@ react-is@^18.0.0, react-is@^18.1.0, react-is@^18.2.0:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-18.3.1.tgz#e83557dc12eae63a99e003a46388b1dcbb44db7e"
   integrity sha512-/LLMVyas0ljjAtoYiPqYiL8VWXzUUdThrmU5+n20DZv+a+ClRoevUzw5JxU+Ieh5/c87ytoTBV9G1FiKfNJdmg==
 
+react-native-checkbox-reanimated@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/react-native-checkbox-reanimated/-/react-native-checkbox-reanimated-0.1.1.tgz#7d13bb42734cc73a66938e133fb39249e0b41e0a"
+  integrity sha512-LvSFBJxGqEOrNAKtypdtFCxWCLaZ6K/0ZKz8WFj0OEuyhHTwwy/ASyfOzN2JibADsTfVQiQgrIzpyjvqCLfR3w==
+
 react-native-gesture-handler@^2.21.2:
   version "2.21.2"
   resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-2.21.2.tgz#824a098d7397212fbe51aa3a9df84833a4ea1c3f"
@@ -5205,10 +5210,10 @@ react-native-svg-transformer@^1.5.0:
     "@svgr/plugin-svgo" "^8.1.0"
     path-dirname "^1.0.2"
 
-react-native-svg@15.8.0:
-  version "15.8.0"
-  resolved "https://registry.yarnpkg.com/react-native-svg/-/react-native-svg-15.8.0.tgz#9b5fd4f5cf5675197b3f4cbfcc77c215de2b9502"
-  integrity sha512-KHJzKpgOjwj1qeZzsBjxNdoIgv2zNCO9fVcoq2TEhTRsVV5DGTZ9JzUZwybd7q4giT/H3RdtqC3u44dWdO0Ffw==
+react-native-svg@^15.9.0:
+  version "15.9.0"
+  resolved "https://registry.yarnpkg.com/react-native-svg/-/react-native-svg-15.9.0.tgz#a742a63cb463502ce591fdfcf7b9e80544f0a8c2"
+  integrity sha512-pwo7hteAM0P8jNpPGQtiSd0SnbBhE8tNd94LT8AcZcbnH5AJdXBIcXU4+tWYYeGUjiNAH2E5d0T5XIfnvaz1gA==
   dependencies:
     css-select "^5.1.0"
     css-tree "^1.1.3"
