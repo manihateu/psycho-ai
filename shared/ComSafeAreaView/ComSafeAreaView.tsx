@@ -4,12 +4,13 @@ import { SafeAreaView } from 'react-native'
 
 type TComSafeAreaViewProps = {
   children: React.ReactNode,
-  style?: StyleProp<ViewProps>
+  style?: StyleProp<ViewProps>,
+  className?: string
 }
 
-const ComSafeAreaView = ({children, style} : TComSafeAreaViewProps) => {
+const ComSafeAreaView = ({children, style, className} : TComSafeAreaViewProps) => {
   return (
-    <SafeAreaView style={[{marginTop: StatusBar.currentHeight, flex: 1}, style]} >{children}</SafeAreaView>
+    <SafeAreaView className={className} style={[{marginTop: StatusBar.currentHeight, flex: 1}, style]} >{children}</SafeAreaView>
   )
 }
 

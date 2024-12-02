@@ -13,7 +13,7 @@ export const ChatScreen = () => {
     
     return (
         <Layout>  
-                <ComButton onPress={() => {navigation.navigate("OnboardingScreen")}} title="начнем" variant="primary"/>
+                <ComButton onPress={() => {navigation.navigate("WelcomeScreen")}} title="начнем" variant="primary"/>
                 <ComInput placeholder="Полина" onChange={(Text) => {setValue(Text)}} value={value}/>
         </Layout>
         
