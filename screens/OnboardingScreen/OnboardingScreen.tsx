@@ -39,7 +39,7 @@ const OnboardingScreen = () => {
               <ComAnimatedAppearance className=' w-full'>
                 <ComButton onPress={() => navigate("SignUpScreen")} title='Зарегистрироваться' className='mx-3 my-2' size='medium'/>
               </ComAnimatedAppearance>
-              <View className='flex flex-row w-full px-1 justify-center  '>
+              <View className='flex flex-row w-full px-1 justify-center'>
                 <Text className='font-Comfortaa text-gray-400 mr-2'>
                   Уже есть аккаунт?
                 </Text>

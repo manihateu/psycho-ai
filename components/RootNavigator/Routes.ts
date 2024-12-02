@@ -1,3 +1,4 @@
+import ChooseTopicScreen from "../../screens/ChooseTopicScreen/ChooseTopicScreen";
 import HomeLayout from "../../screens/HomeLayout/HomeLayout";
 import LoginScreen from "../../screens/LoginScreen/LoginScreen";
 import OnboardingScreen from "../../screens/OnboardingScreen/OnboardingScreen";
@@ -10,6 +11,10 @@ type TRoute = {
 }
 
 export const public_routes: TRoute[] = [
+    {
+        name: "ChooseTopicScreen",
+        component: ChooseTopicScreen
+    },
     {
         name: "OnboardingScreen",
         component: OnboardingScreen
