@@ -5,11 +5,15 @@ import WelcomeBG from '../../assets/WelcomeBg.png'
 import ComButton from "../../shared/ComButton/ComButton"
 import { useEffect } from "react"
 import { useNavigation } from "@react-navigation/native"
+import { StackNavigation } from "../../components/RootNavigator/RootNavigator"
 const WelcomeScreen = () => {
     useEffect(() => {
         StatusBar.setBackgroundColor("#8E97FD", true)
     }, [])
-    const navigation = useNavigation()
+    const navigation = useNavigation<StackNavigation>()
+    navigation.addListener('beforeRemove', () => {
+        StatusBar.setBackgroundColor("#FFFFFF", true)
+    })
     return (
         <ComSafeAreaView className="bg-[#8E97FD]">
             <ImageBackground source={WelcomeBG} className="h-full">
@@ -28,7 +32,7 @@ const WelcomeScreen = () => {
                     </Text>
                 </View>
                 <View className="absolute bottom-[95px] left-0 right-0 w-full px-[22px]">
-                    <ComButton onPress={() => {navigation.navigate("ChatScreen")}} title="Начнем!" variant="secondary" className=""/>
+                    <ComButton onPress={() => {navigation.navigate("ChatScreen")}} title="Начнем!" variant="secondary" size="medium"/>
                 </View>
             </ImageBackground>
         </ComSafeAreaView>

@@ -1,6 +1,7 @@
-import { ChatScreen } from "../../screens/ChatScreen/ChatScreen";
+import HomeLayout from "../../screens/HomeLayout/HomeLayout";
 import LoginScreen from "../../screens/LoginScreen/LoginScreen";
 import OnboardingScreen from "../../screens/OnboardingScreen/OnboardingScreen";
+import SignUpScreen from "../../screens/SignUpScreen/SignUpScreen";
 import WelcomeScreen from "../../screens/WelcomeScreen/WelcomeScreen";
 
 type TRoute = {
@@ -8,21 +9,28 @@ type TRoute = {
     component: () => React.JSX.Element
 }
 
-export const private_routes: TRoute[] = [
+export const public_routes: TRoute[] = [
     {
-        name: "WelcomeScreen",
-        component: WelcomeScreen
-    },
-    {
-        name: "ChatScreen",
-        component: ChatScreen
+        name: "OnboardingScreen",
+        component: OnboardingScreen
     },
     {
         name: "LoginScreen",
         component: LoginScreen
     },
     {
-        name: "OnboardingScreen",
-        component: OnboardingScreen
-    }
+        name: "SignUpScreen",
+        component: SignUpScreen
+    },
+    {
+        name: "WelcomeScreen",
+        component: WelcomeScreen
+    },
+]
+
+export const private_routes: TRoute[] = [
+    {
+        name: "HomeLayout",
+        component: HomeLayout
+    },
 ]
