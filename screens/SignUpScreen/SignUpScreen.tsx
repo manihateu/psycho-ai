@@ -46,9 +46,8 @@ const SignUpScreen = () => {
                     <ComInput
                     placeholder="Email"
                     onChange={(text) => {
-                        console.log("Введенный email:", text);
-                        onChange(text); // Обновляем значение
-                        trigger("email"); // Запускаем проверку
+                        onChange(text); 
+                        trigger("email"); 
                       }}
                     value={value}
                     isAccepted={!hasError}
@@ -64,37 +63,59 @@ const SignUpScreen = () => {
             }}
             />
             <Controller
-                control={control}
-                rules={{
-                    required: true,
-                    onChange: () => {
-                        trigger("name")
-                    }
-                }}
-                render={({ field: { onChange, onBlur, value } }) => (
+            control={control}
+            name="name"
+            render={({ field: { onChange, onBlur, value } }) => {
+                const hasError = Boolean(errors.name);
+                return (
+                <>
                     <ComInput
-                      placeholder="Имя"
-                      onChange={onChange}
-                      value={value}
-                      classNames='mt-5'
+                    placeholder="Имя"
+                    onChange={(text) => {
+                        onChange(text); 
+                        trigger("name"); 
+                      }}
+                    value={value}
+                    isAccepted={!hasError}
+                    classNames='mt-5'
                     />
-                  )}
-                name="name"
+                    {hasError && (
+                    <Text className='text-red-500 mt-2'>
+                        {errors.name?.message || "Слишком короткое имя"}
+                    </Text>
+                    )}
+                </>
+                );
+            }}
             />
             <Controller
                 control={control}
                 rules={{
                     required: true
                 }}
-                render={({ field: { onChange, onBlur, value } }) => (
-                    <ComInput
-                      placeholder="Пароль"
-                      onChange={onChange}
-                      value={value}
-                      classNames='mt-5'
-                      isPassword
-                    />
-                  )}
+                render={({ field: { onChange, onBlur, value } }) => {
+                    const hasError = Boolean(errors.password);
+                    return (
+                    <>
+                        <ComInput
+                        placeholder="Пароль"
+                        onChange={(text) => {
+                            onChange(text); 
+                            trigger("password"); 
+                          }}
+                        value={value}
+                        isAccepted={!hasError}
+                        classNames='mt-5'
+                        isPassword
+                        />
+                        {hasError && (
+                        <Text className='text-red-500 mt-2'>
+                            {errors.password?.message || "Слишком короткий пароль"}
+                        </Text>
+                        )}
+                    </>
+                    );
+                }}
                 name="password"
             />
             <View className='mt-[20px] flex flex-row justify-between'>
