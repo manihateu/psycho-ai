@@ -1,4 +1,4 @@
-import { Pressable, StyleProp, Text, ViewStyle } from "react-native"
+import { Pressable, StyleProp, Text, TouchableOpacity, ViewStyle } from "react-native"
 import Loader from "../Loader/Loader"
 
 type TComButtonProps = {
@@ -12,7 +12,7 @@ type TComButtonProps = {
 
 const ComButton = ({style, variant = 'primary', onPress, isLoading, className, title}: TComButtonProps) => {
     return (
-        <Pressable disabled={isLoading} onPress={onPress} style={style} className={`${variant == "primary" ? "bg-[#8E97FD]" : "bg-[#EBEAEC]"} flex justify-center items-center p-3 rounded-full ${className}`}>
+        <TouchableOpacity disabled={isLoading} onPress={onPress} style={style} className={`${variant == "primary" ? "bg-[#8E97FD]" : "bg-[#EBEAEC]"} flex justify-center items-center p-3 rounded-full ${className}`}>
             
             {
                 isLoading ? <Loader/> :
@@ -23,7 +23,7 @@ const ComButton = ({style, variant = 'primary', onPress, isLoading, className, t
                 </Text>
             }    
             
-        </Pressable>
+        </TouchableOpacity>
     )
 }
 
