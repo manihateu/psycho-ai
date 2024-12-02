@@ -32,7 +32,7 @@ const WelcomeScreen = () => {
                     </Text>
                 </View>
                 <View className="absolute bottom-[95px] left-0 right-0 w-full px-[22px]">
-                    <ComButton onPress={() => {navigation.navigate("ChatScreen")}} title="Начнем!" variant="secondary" className=""/>
+                    <ComButton onPress={() => {navigation.navigate("ChatScreen")}} title="Начнем!" variant="secondary" size="medium"/>
                 </View>
             </ImageBackground>
         </ComSafeAreaView>
