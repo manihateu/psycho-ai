@@ -10,9 +10,9 @@ export class AuthService {
     private jwtService: JwtService,
   ) {}
 
-  async register(name: string, email: string, password: string) {
-    const user = await this.usersService.createUser(name, email, password);
-    return this.generateTokens(user.id, user.email);
+  async register(name: string, email: string, password: string, role: "USER" | "ADMIN") {
+    const user = await this.usersService.createUser(name, email, password, role);
+    return this.generateTokens(user.id, user.email, user.role);
   }
 
   async login(email: string, password: string) {
@@ -22,11 +22,11 @@ export class AuthService {
     const passwordMatches = await bcrypt.compare(password, user.password);
     if (!passwordMatches) throw new UnauthorizedException('Invalid credentials');
 
-    return this.generateTokens(user.id, user.email);
+    return this.generateTokens(user.id, user.email, user.role);
   }
 
-  generateTokens(userId: number, email: string) {
-    const payload = { sub: userId, email };
+  generateTokens(userId: number, email: string, role: "USER" | "ADMIN") {
+    const payload = { sub: userId, email, role };
     const accessToken = this.jwtService.sign(payload, {
       secret: process.env.JWT_SECRET,
       expiresIn: '15m',
