@@ -5046,6 +5046,11 @@ postcss@^8.4.12, postcss@^8.4.23, postcss@~8.4.32:
     picocolors "^1.1.1"
     source-map-js "^1.2.1"
 
+prettier@^3.4.1:
+  version "3.4.1"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-3.4.1.tgz#e211d451d6452db0a291672ca9154bc8c2579f7b"
+  integrity sha512-G+YdqtITVZmOJje6QkXQWzl3fSfMxFwm1tjTyo9exhkmWSqC4Yhd1+lug++IlR2mvRVAxEDDWYkQdeSztajqgg==
+
 pretty-bytes@^5.6.0:
   version "5.6.0"
   resolved "https://registry.yarnpkg.com/pretty-bytes/-/pretty-bytes-5.6.0.tgz#356256f643804773c82f64723fe78c92c62beaeb"
@@ -5203,6 +5208,16 @@ react-native-gesture-handler@^2.21.2:
     hoist-non-react-statics "^3.3.0"
     invariant "^2.2.4"
     prop-types "^15.7.2"
+
+react-native-linear-gradient@^2.8.3:
+  version "2.8.3"
+  resolved "https://registry.yarnpkg.com/react-native-linear-gradient/-/react-native-linear-gradient-2.8.3.tgz#9a116649f86d74747304ee13db325e20b21e564f"
+  integrity sha512-KflAXZcEg54PXkLyflaSZQ3PJp4uC4whM7nT/Uot9m0e/qxFV3p6uor1983D1YOBJbJN7rrWdqIjq0T42jOJyA==
+
+react-native-reanimated-skeleton@^1.5.1:
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/react-native-reanimated-skeleton/-/react-native-reanimated-skeleton-1.5.1.tgz#6167a402e541d01e056a5477ce2c4e7dcc2df191"
+  integrity sha512-PO7/hWBDlV8w3l6EJmzzwWwdlXVTrBFuF8QcUu4ZUOMQQGD5YKfBsYnUNkPAfjvYx3ZJfvPORe72QbArI3OGSw==
 
 react-native-reanimated@~3.16.1:
   version "3.16.3"

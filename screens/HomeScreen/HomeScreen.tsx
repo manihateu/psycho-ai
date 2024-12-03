@@ -5,12 +5,15 @@ import mockCardImg1 from '../../assets/mockCardImg1.png'
 import mockCardImg2 from '../../assets/mockCardImg2.png'
 import { Image } from "react-native"
 import TopCard from "./FlatPlayCard/TopCard"
+import { useGetUserQuery } from "../../store/api/authorizeApiSlice"
+import Skeleton from "../../shared/ComSkeleton/ComSkeleton"
 
 const HomeScreen = () => {
+    const{data, error, isLoading} = useGetUserQuery({})
     return (
         <ScrollView className="w-full">
             <View className="px-[20px]">
-                <Text className="font-Comfortaa text-xl">Доброе утро, User!</Text>
+                <Text className="font-Comfortaa text-xl ">Доброе утро, {(isLoading) ? <Skeleton /> : data.name}!</Text>
                 <Text className="font-Comfortaa text-lg text-[#A1A4B2]">Мы желаем вам хорошего дня</Text>
                 <View className="flex flex-row justify-between gap-y-[20px] mt-[30px]">
                     <TopCard image={mockCardImg1} title={"Основы"} subtitle={"Курс"} time_first={5} time_second={10} classNames="bg-[#8E97FD]"/>
