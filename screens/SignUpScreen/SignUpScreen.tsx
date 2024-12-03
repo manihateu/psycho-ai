@@ -11,6 +11,7 @@ import { StackNavigation } from '../../components/RootNavigator/RootNavigator'
 import { Controller, useForm } from 'react-hook-form'
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SignUpSchema, SignUpSchemaData } from './form.validation'
+import { TRegisterBody, useRegisterMutation } from '../../store/api/mainApiSlice'
 
 const SignUpScreen = () => {
     const [checked, setChecked] = useState(false);
@@ -18,12 +19,21 @@ const SignUpScreen = () => {
     useEffect(() => {
         StatusBar.setBackgroundColor("#FFFFFF", true)
     }, [])
-
-    const {control, handleSubmit, formState: {errors, isLoading}, trigger} = useForm<SignUpSchemaData>({
+    const [register, {isLoading}] = useRegisterMutation()
+    const {control, handleSubmit, formState: {errors}, trigger} = useForm<SignUpSchemaData>({
         resolver: zodResolver(SignUpSchema)
     })
 
-    const onSubmit = handleSubmit(data => console.log(data));
+    const onSubmit = handleSubmit(async data => {
+        const {checked, ..._data} = data;
+        try {
+            if (!checked) throw new Error("")
+            const data = await register(_data).unwrap
+            console.log(data)
+        } catch (e) {
+            console.log(e)
+        }
+    });
     console.log(errors)
   return (
     <ComSafeAreaView className='bg-white'>
