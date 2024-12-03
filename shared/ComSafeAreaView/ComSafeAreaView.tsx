@@ -10,7 +10,7 @@ type TComSafeAreaViewProps = {
 
 const ComSafeAreaView = ({children, style, className} : TComSafeAreaViewProps) => {
   return (
-    <SafeAreaView className={className} style={[{marginTop: StatusBar.currentHeight, flex: 1}, style]} >{children}</SafeAreaView>
+    <SafeAreaView className={className} style={[{marginTop: StatusBar.currentHeight, flex: 1, position: 'relative'}, style]} >{children}</SafeAreaView>
   )
 }
 

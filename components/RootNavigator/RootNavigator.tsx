@@ -1,6 +1,8 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { private_routes, public_routes } from "./Routes";
 import { NavigationProp } from "@react-navigation/native";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/store";
 
 export type ScreenNames = 
     typeof private_routes[number]["name"]
@@ -11,7 +13,8 @@ export type StackNavigation = NavigationProp<RootStackParamList>;
 const Stack = createNativeStackNavigator <RootStackParamList> ();
 
 export const RootNavigator = () => {
-    const isAuth = true
+    const isAuth = useSelector((state: RootState) => state.userAuth.isAuth)
+    console.log(isAuth)
     return (
         <Stack.Navigator>
             

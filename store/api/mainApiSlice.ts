@@ -10,10 +10,10 @@ type TAuthResponse = {
   refreshToken: string,
   accessToken: string
 }
-
+console.log('123')
 export const mainApiSlice = createApi({
   reducerPath: 'mainApi',
-  baseQuery: fetchBaseQuery({ baseUrl: process.env.API_URL }),
+  baseQuery: fetchBaseQuery({ baseUrl: "https://psycho-ai-backend.onrender.com" }),
   endpoints: (builder) => ({
       register: builder.mutation<TAuthResponse, TRegisterBody>({
         query: body => ({
