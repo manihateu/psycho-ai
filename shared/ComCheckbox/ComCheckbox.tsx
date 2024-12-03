@@ -8,7 +8,7 @@ type TComCheckboxProps = {
 
 const ComCheckbox = ({checked, setChecked}: TComCheckboxProps) => {
     const handleCheckboxPress = () => {
-        setChecked(prev => { return !prev }) 
+        setChecked(!checked) 
     } 
     return (
             <Pressable onPress={handleCheckboxPress}> 

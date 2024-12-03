@@ -21,10 +21,10 @@ const Layout = ({children, canBack, selected, setSelectedPage} : TLayoutProps) =
     }, [])
   return (
     <ComSafeAreaView style={{backgroundColor: '#fff'}}>
-        <View className='w-full flex p-3 flex-row gap-x-[8px] items-center justify-center'>
-            <Text className='font-Comfortaa min-w-[75]'>Ментальный</Text>
+        <View className='w-full flex p-3 flex-row items-center justify-center'>
+            <Text className='font-Comfortaa min-w-[102px] mr-[8px]'>Ментальный</Text>
             <Logo width={30} height={30}/>
-            <Text className='font-Comfortaa min-w-[75px]'>Помощник</Text>
+            <Text className='font-Comfortaa min-w-[102px] ml-[8px]'>Помощник</Text>
         </View>
         <ImageBackground source={LayoutBg} className='flex-1 w-full bg-white'>
             {children}
