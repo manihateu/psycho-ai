@@ -6,6 +6,11 @@ export type TRegisterBody = {
   password: string
 }
 
+export type TLoginBody = {
+  email: string,
+  password: string
+}
+
 type TAuthResponse = {
   refreshToken: string,
   accessToken: string
@@ -22,7 +27,7 @@ export const mainApiSlice = createApi({
           method: "POST"
         })
       }),
-      login : builder.mutation({
+      login : builder.mutation<TAuthResponse, TLoginBody>({
         query: body => ({
           url: "/auth/login",
           body,

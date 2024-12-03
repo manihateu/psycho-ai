@@ -14,7 +14,7 @@ import { SignUpSchema, SignUpSchemaData } from './form.validation'
 import { TRegisterBody, useRegisterMutation } from '../../store/api/mainApiSlice'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useDispatch } from 'react-redux'
-import { login } from '../../store/slices/userSlice'
+import { loginAction } from '../../store/slices/userSlice'
 
 const SignUpScreen = () => {
     const {goBack, navigate} = useNavigation<StackNavigation>()
@@ -38,8 +38,7 @@ const SignUpScreen = () => {
             const data = await register(_data).unwrap()
             await AsyncStorage.setItem("x-token-access", data.accessToken)
             await AsyncStorage.setItem("x-token-refresh", data.refreshToken)
-            dispath(login(data.accessToken))
-            console.log(data)
+            dispath(loginAction(data.accessToken))
         } catch (e) {
             console.log(e)
         }
