@@ -12,9 +12,13 @@ import { Controller, useForm } from 'react-hook-form'
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SignUpSchema, SignUpSchemaData } from './form.validation'
 import { TRegisterBody, useRegisterMutation } from '../../store/api/mainApiSlice'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import { useDispatch } from 'react-redux'
+import { loginAction } from '../../store/slices/userSlice'
 
 const SignUpScreen = () => {
     const {goBack, navigate} = useNavigation<StackNavigation>()
+    const dispath = useDispatch()
     useEffect(() => {
         StatusBar.setBackgroundColor("#FFFFFF", true)
     }, [])
@@ -31,8 +35,10 @@ const SignUpScreen = () => {
         const {checked, ..._data} = data;
         try {
             if (!checked) throw new Error("")
-            const data = await register(_data).unwrap
-            console.log(data)
+            const data = await register(_data).unwrap()
+            await AsyncStorage.setItem("x-token-access", data.accessToken)
+            await AsyncStorage.setItem("x-token-refresh", data.refreshToken)
+            dispath(loginAction(data.accessToken))
         } catch (e) {
             console.log(e)
         }
@@ -148,7 +154,7 @@ const SignUpScreen = () => {
                     name="checked"
                 />
             </View>
-            <ComButton title="Начнем!" className='mt-[30px]' size='medium' onPress={onSubmit}/>
+            <ComButton isLoading={isLoading} title="Начнем!" className='mt-[30px]' size='medium' onPress={onSubmit}/>
         </View>
         
     </ComSafeAreaView>

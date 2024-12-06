@@ -6,14 +6,20 @@ export type TRegisterBody = {
   password: string
 }
 
+export type TLoginBody = {
+  email: string,
+  password: string
+}
+
 type TAuthResponse = {
   refreshToken: string,
   accessToken: string
 }
-
+console.log('123')
 export const mainApiSlice = createApi({
   reducerPath: 'mainApi',
-  baseQuery: fetchBaseQuery({ baseUrl: process.env.API_URL }),
+  // baseQuery: fetchBaseQuery({ baseUrl: process.env.API_URL }),
+  baseQuery: fetchBaseQuery({ baseUrl: "https://psycho-ai-backend.onrender.com" }),
   endpoints: (builder) => ({
       register: builder.mutation<TAuthResponse, TRegisterBody>({
         query: body => ({
@@ -22,7 +28,7 @@ export const mainApiSlice = createApi({
           method: "POST"
         })
       }),
-      login : builder.mutation({
+      login : builder.mutation<TAuthResponse, TLoginBody>({
         query: body => ({
           url: "/auth/login",
           body,
