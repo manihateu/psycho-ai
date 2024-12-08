@@ -1,6 +1,6 @@
 FROM node:23
 
-WORKDIR /usr/src/app
+WORKDIR /usr/src/app/server
 
 COPY package.json yarn.lock ./
 RUN yarn install --frozen-lockfile
