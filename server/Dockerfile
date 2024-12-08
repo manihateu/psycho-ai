@@ -1,6 +1,6 @@
 FROM node:23
 
-WORKDIR /usr/src/psycho-ai/server
+WORKDIR /usr/src/
 
 COPY package.json yarn.lock ./
 RUN yarn install --frozen-lockfile
