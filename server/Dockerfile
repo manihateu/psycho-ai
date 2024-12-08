@@ -1,6 +1,6 @@
 FROM node:23
 
-WORKDIR /usr/src/app
+WORKDIR /usr/src/psycho-ai/server
 
 COPY package.json yarn.lock ./
 RUN yarn install --frozen-lockfile
@@ -9,7 +9,7 @@ RUN npx prisma migrate deploy
 
 COPY . .
 
-RUN yarn build
+RUN yarn run build
 
 EXPOSE 3000
 
