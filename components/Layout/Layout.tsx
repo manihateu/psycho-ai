@@ -1,51 +1,109 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import ComSafeAreaView from '../../shared/ComSafeAreaView/ComSafeAreaView'
-import { Text, View } from 'react-native'
+import { Dimensions, ImageBackground, StatusBar, Text, TouchableOpacity, View } from 'react-native'
 import Logo from '../../assets/logo.svg'
 import LogoBtn from '../../assets/LogoBtn.svg'
 import Profile from '../../assets/Profile.svg'
-import Loon from '../../assets/Loon.svg'
 import Music from '../../assets/Music.svg'
-import Home from '../../assets/Home.svg'
-
+import Svg, { Path } from 'react-native-svg'
+import LayoutBg from '../../assets/LayoutBg.png'
 
 type TLayoutProps = {
     children: any,
     canBack?: boolean,
+    selected?: number,
+    setSelectedPage: (a: number) => void
 }
 
-const Layout = ({children, canBack} : TLayoutProps) => {
+const Layout = ({children, canBack, selected, setSelectedPage} : TLayoutProps) => {
+    useEffect(() => {
+        StatusBar.setBackgroundColor("#FFFFFF", true) 
+    }, [])
   return (
     <ComSafeAreaView style={{backgroundColor: '#fff'}}>
-        <View className='w-full flex p-3 flex-row gap-x-[8px] items-center justify-center'>
-            <Text className='font-Comfortaa min-w-[75]'>Ментальный</Text>
+        <View className='w-full flex p-3 flex-row items-center justify-center'>
+            <Text className='font-Comfortaa min-w-[102px] mr-[8px]'>Ментальный</Text>
             <Logo width={30} height={30}/>
-            <Text className='font-Comfortaa min-w-[75px]'>Помощник</Text>
+            <Text className='font-Comfortaa min-w-[102px] ml-[8px]'>Помощник</Text>
         </View>
-        <View className='flex-1 bg-white'>
+        <ImageBackground source={LayoutBg} className='flex-1 w-full bg-white'>
             {children}
-        </View>
+        </ImageBackground>
         <View className='bg-white flex flex-row py-3 justify-around'>
-            <View className='flex items-center gap-y-[8px] min-w-[70px]'>
-                <Home width={30} height={30}/>
-                <Text className='font-Comfortaa text-[#A0A3B1] '>Главная</Text>
-            </View>
-            <View className='flex items-center gap-y-[8px] min-w-[70px]'>
-                <Loon width={30} height={30}/>
-                <Text className='font-Comfortaa text-[#A0A3B1]'>Сон</Text>
-            </View>
-            <View className='flex items-center gap-y-[8px] min-w-[70px]'>
-                <LogoBtn width={30} height={30}/>
-                <Text className='font-Comfortaa text-[#A0A3B1]'>Помощник</Text>
-            </View>
-            <View className='flex items-center gap-y-[8px] min-w-[70px]'>
-                <Music width={30} height={30}/>
-                <Text className='font-Comfortaa text-[#A0A3B1]'>Музыка</Text>
-            </View>
-            <View className='flex items-center gap-y-[8px] min-w-[70px]'>
-                <Profile width={30} height={30}/>
-                <Text className='font-Comfortaa text-[#A0A3B1]'>Профиль</Text>
-            </View>
+
+            <TouchableOpacity onPress={() => setSelectedPage(0)} disabled={selected == 0} className={`flex items-center justify-center gap-y-[5px] min-w-[70px]`}>
+                <View className={`${selected == 0 ? "bg-[#8E97FD]" : 'bg-white'} p-[12px] rounded-[18px]`}>
+                    <Svg width={30} height={30} viewBox="0 0 22 22" fill="none">
+                        <Path 
+                            d="M20.3204 7.50594L12.7282 0.819133C11.6436 -0.265457 9.87783 -0.265456 8.83806 0.774315L1.1563 7.55076C0.412323 8.29473 0 9.28969 0 10.3474V19.302C0 20.7899 1.21008 22 2.69803 22H18.8324C20.3114 22 21.5215 20.7899 21.5215 19.302V10.3474C21.5215 9.28969 21.1092 8.29473 20.3204 7.50594ZM19.7288 19.302C19.7288 19.8039 19.3254 20.2073 18.8324 20.2073H13.1495V14.4348C13.1495 13.9149 12.7372 13.5026 12.2173 13.5026H9.30416C8.79324 13.5026 8.37195 13.9149 8.37195 14.4348V20.2073H2.69803C2.19607 20.2073 1.79271 19.8039 1.79271 19.302V10.3474C1.79271 9.78268 2.02576 9.21798 2.3843 8.85047L10.0661 2.08299C10.2543 1.89476 10.4963 1.79616 10.7473 1.79616C11.0162 1.79616 11.2851 1.90372 11.5002 2.11885L19.0924 8.81462C19.5047 9.22694 19.7288 9.77372 19.7288 10.3474V19.302Z" 
+                            fill={`${selected == 0 ? "#FFFFFF" : "#A0A3B1"}`}
+                        />
+                    </Svg>
+                </View>
+                <Text className={`font-Comfortaa text-[#A0A3B1] ${selected == 0 && "text-[#8E97FD]"}`}>Главная</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={() => setSelectedPage(1)} disabled={selected == 1} className='flex items-center justify-center gap-y-[5px] min-w-[70px]'>
+                <View className={`${selected == 1 ? "bg-[#8E97FD]" : 'bg-white'} p-[12px] rounded-[18px]`}>
+                    <Svg width={30} height={30} viewBox="0 0 24 22" fill="none">
+                        <Path 
+                            d="M11.9761 22C5.64659 22 0.5 16.8534 0.5 10.5327C0.5 6.03056 3.14833 1.92565 7.25325 0.071818C7.50042 -0.042943 7.78291 -0.0164596 8.01243 0.124785C8.24196 0.266029 8.3832 0.513207 8.3832 0.786867C8.51562 6.90451 13.6092 11.8922 19.7357 11.8922C20.6008 11.8922 21.466 11.7951 22.3134 11.5921C22.5694 11.5303 22.8519 11.6009 23.0461 11.7863C23.2403 11.9717 23.3286 12.2365 23.2845 12.5013C22.3311 18.0098 17.5817 22 11.9761 22ZM6.87365 2.07572C3.94283 3.8501 2.09783 7.05458 2.09783 10.5327C2.09783 15.9706 6.52937 20.4022 11.9761 20.4022C16.3988 20.4022 20.2124 17.5067 21.4395 13.3753C20.8745 13.4547 20.3007 13.49 19.7357 13.49C13.1679 13.49 7.64167 8.47585 6.87365 2.07572Z"
+                            fill={`${selected == 1 ? "#FFFFFF" : "#A0A3B1"}`}
+                        />
+                    </Svg>
+                </View>
+                <Text className={`font-Comfortaa text-[#A0A3B1] ${selected == 1 && "text-[#8E97FD]"}`}>Сон</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={() => setSelectedPage(2)} disabled={selected == 2} className='flex items-center justify-center gap-y-[5px] min-w-[70px]'>
+                <View className={`${selected == 2 ? "bg-[#8E97FD]" : 'bg-white'} p-[12px] rounded-[18px]`}>
+                    <Svg width={30} height={30} viewBox="0 0 19 22" fill="none">
+                        <Path 
+                            d="M8.71732 22.0002C8.16345 22.0002 3.33303 21.9366 1.35364 19.6031C0.645422 18.7678 0.37303 17.7236 0.554625 16.5886L0.572784 16.4887C0.590944 16.407 0.600023 16.3344 0.618183 16.2618L0.954134 14.9361C1.24469 13.9283 1.54432 13.0748 1.88027 12.2757C2.25254 11.4041 2.73376 10.5688 3.39659 9.6517C4.25008 8.46225 5.27609 7.11845 6.65621 6.29219C7.11928 6.0198 7.84566 5.70201 8.69916 5.75649C9.56173 5.70201 10.279 6.01072 10.7421 6.29219C12.0677 7.08213 13.0938 8.37145 14.0108 9.6517C14.6646 10.5688 15.1458 11.4041 15.5271 12.2757C15.9448 13.2382 16.2989 14.3005 16.6076 15.5081L16.7983 16.2618C17.0798 17.4784 16.8618 18.5952 16.1445 19.4941C14.2287 21.9366 9.28026 22.0002 8.71732 22.0002ZM2.61573 15.7714L2.36149 16.8156C2.25254 17.5057 2.37057 18.0051 2.74284 18.4318C3.96861 19.8755 7.47339 20.1933 8.71732 20.1933H8.7264C9.99756 20.1933 13.5659 19.8664 14.7463 18.3773C15.1185 17.9143 15.2093 17.3695 15.0459 16.6794L14.8734 15.9712C14.5828 14.8544 14.256 13.8829 13.8837 13.0021C13.5568 12.2485 13.1392 11.5221 12.558 10.7049C11.8135 9.66078 10.9328 8.49857 9.84321 7.85391C9.48002 7.64507 9.11683 7.5452 8.79904 7.57244L8.71732 7.58152L8.62652 7.57244C8.31781 7.5452 7.94554 7.64507 7.60051 7.85391C6.52002 8.49857 5.6302 9.66078 4.88566 10.7049C4.30456 11.5221 3.88689 12.2485 3.56002 13.0021C3.25131 13.7194 2.97892 14.5003 2.72468 15.3901L2.61573 15.7714Z"
+                            fill={`${selected == 2 ? "#FFFFFF" : "#A0A3B1"}`}
+                        />
+                        <Path 
+                            d="M15.0096 6.98233C13.0847 6.98233 11.5229 5.42061 11.5229 3.4957C11.5229 1.5708 13.0847 0 15.0096 0C16.9345 0 18.4962 1.56172 18.4962 3.48662C18.4962 5.41153 16.9345 6.98233 15.0096 6.98233ZM15.0096 1.81595C14.0834 1.81595 13.3389 2.56957 13.3389 3.48662C13.3389 4.40368 14.0925 5.1573 15.0096 5.1573C15.9266 5.1573 16.6802 4.40368 16.6802 3.48662C16.6802 2.56957 15.9266 1.81595 15.0096 1.81595Z"
+                            fill={`${selected == 2 ? "#FFFFFF" : "#A0A3B1"}`}
+                        />
+                    </Svg>
+                </View>
+                <Text className={`font-Comfortaa text-[#A0A3B1] ${selected == 2 && "text-[#8E97FD]"}`}>Помощник</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={() => setSelectedPage(3)} disabled={selected == 3} className='flex items-center justify-center gap-y-[5px] min-w-[70px]'>
+                <View className={`${selected == 3 ? "bg-[#8E97FD]" : 'bg-white'} p-[12px] rounded-[18px]`}>
+                    <Svg width={30} height={30} viewBox="0 0 27 22" fill="none">
+                        <Path 
+                            d="M10.4638 10.4887C10.3643 10.4706 10.2647 10.4616 10.1652 10.4616H6.02037C2.97964 10.4616 0.5 12.9322 0.5 15.9819V16.4797C0.5 19.5204 2.97964 22 6.02037 22H6.7534C8.79865 22 10.5996 20.8779 11.5407 19.2037C12.0113 18.3982 12.2738 17.4752 12.2738 16.4797V12.5611C12.2738 11.5023 11.4774 10.6245 10.4638 10.4887ZM10.4638 16.4797C10.4638 18.5249 8.79865 20.1901 6.7534 20.1901H6.02037C3.97512 20.1901 2.30995 18.5249 2.30995 16.4797V15.9819C2.30995 13.9367 3.97512 12.2715 6.02037 12.2715H10.1652C10.3281 12.2715 10.4638 12.3982 10.4638 12.5611V16.4797Z"
+                            fill={`${selected == 3 ? "#FFFFFF" : "#A0A3B1"}`}
+                        />
+                        <Path 
+                            d="M21.4052 0.0361991H20.8079V0H16.093C12.9889 0 10.4641 2.52489 10.4641 5.62896V15.9004C10.4641 17.1403 10.8622 18.2805 11.541 19.2036C12.0116 18.3982 12.274 17.4751 12.274 16.4796V5.62896C12.274 3.52036 13.9844 1.80995 16.093 1.80995H20.3554V1.819H21.4052C23.1518 1.819 24.5726 3.23982 24.5726 4.98642V9.14027C24.5274 9.13122 24.4731 9.13122 24.4278 9.13122H20.8713C18.265 9.13122 16.1292 11.2489 16.1292 13.8643V14.2896C16.1292 16.8959 18.265 19.0317 20.8713 19.0317H21.4957C23.2514 19.0317 24.7989 18.0633 25.6043 16.6244C25.8758 16.1629 26.0749 15.6561 26.1654 15.1041C26.2831 14.6787 26.3464 14.2443 26.3464 13.7919V4.98642C26.3464 2.25339 24.1292 0.0361991 21.4052 0.0361991ZM24.6812 14.2896C24.6812 14.5158 24.6541 14.733 24.6179 14.9502C24.3102 16.3891 23.0251 17.4751 21.4957 17.4751H20.8713C19.1156 17.4751 17.6858 16.0452 17.6858 14.2896V13.8643C17.6858 12.1086 19.1156 10.6787 20.8713 10.6787H24.4278C24.4821 10.6787 24.5274 10.6968 24.5726 10.724C24.636 10.7692 24.6812 10.8416 24.6812 10.9321V14.2896Z"
+                            fill={`${selected == 3 ? "#FFFFFF" : "#A0A3B1"}`}
+                        />
+                    </Svg>
+                </View>
+                <Text className={`font-Comfortaa text-[#A0A3B1] ${selected == 3 && "text-[#8E97FD]"}`}>Музыка</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={() => setSelectedPage(4)} disabled={selected == 4} className='flex items-center justify-center gap-y-[5px] min-w-[70px]'>
+                <View className={`${selected == 4 ? "bg-[#8E97FD]" : 'bg-white'} p-[12px] rounded-[18px]`}>
+                    <Svg width={30} height={30} viewBox="0 0 20 24" fill="none">
+                        <Path 
+                            d="M4.82328 6.31132C4.82328 9.29253 7.24793 11.7154 10.231 11.7154C13.2142 11.7154 15.6387 9.28514 15.6387 6.30412C15.6387 3.32291 13.2141 0.9 10.231 0.9C7.24785 0.9 4.82328 3.323 4.82328 6.31132ZM6.46559 6.30412C6.46559 4.23332 8.15166 2.54134 10.231 2.54134C12.3103 2.54134 13.9964 4.23332 13.9964 6.30412C13.9964 8.37479 12.3032 10.0669 10.231 10.0669C8.15875 10.0669 6.46559 8.37479 6.46559 6.30412Z"
+                            stroke={`${selected == 4 ? "#FFFFFF" : "#A0A3B1"}`}
+                            strokeWidth="0.2"
+                            fill={`${selected == 4 ? "#FFFFFF" : "#A0A3B1"}`}
+                        />
+                        <Path 
+                            d="M15.2543 24.0001H5.20733C2.60776 24.0001 0.5 21.6235 0.5 18.6924C0.5 15.7612 2.61654 13.3846 5.20733 13.3846H15.2543C17.8539 13.3846 19.9616 15.7711 19.9616 18.6924C19.9616 21.6136 17.8539 24.0001 15.2543 24.0001ZM5.20733 15.3651C3.5826 15.3651 2.25646 16.8604 2.25646 18.6924C2.25646 20.5243 3.5826 22.0196 5.20733 22.0196H15.2543C16.879 22.0196 18.2052 20.5243 18.2052 18.6924C18.2052 16.8604 16.879 15.3651 15.2543 15.3651H5.20733Z"
+                            fill={`${selected == 4 ? "#FFFFFF" : "#A0A3B1"}`}
+                        />
+                    </Svg>
+                </View>
+                <Text className={`font-Comfortaa text-[#A0A3B1] ${selected == 4 && "text-[#8E97FD]"}`}>Профиль</Text>
+            </TouchableOpacity>
         </View>
     </ComSafeAreaView>
   )
