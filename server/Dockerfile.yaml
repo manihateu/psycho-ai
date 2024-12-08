@@ -4,6 +4,7 @@ WORKDIR /usr/src/app
 
 COPY package.json yarn.lock ./
 RUN yarn install --frozen-lockfile
+RUN npx prisma migrate deploy
 
 COPY . .
 
