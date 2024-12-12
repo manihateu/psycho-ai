@@ -18,7 +18,7 @@ const ComInput = ({placeholder, classNames, isPassword, isAccepted, value, onCha
     const [visible, setVisible] = useState <boolean> (true)
     return (
     <View className={`relative ${classNames}`}>
-        <TextInput onSubmitEditing={onSubmit} onChangeText={onChange} secureTextEntry={isPassword ? visible : false} value={value} placeholder={placeholder} className='bg-[#F2F3F7] p-[20px] rounded-2xl font-Comfortaa'/>   
+        <TextInput multiline={true} onChangeText={onChange} secureTextEntry={isPassword ? visible : false} value={value} placeholder={placeholder} className='bg-[#F2F3F7] p-[20px] rounded-2xl font-Comfortaa'/>   
         <View className='absolute right-[20px] h-full flex justify-center items-center gap-x-3 flex-row'>
             {
                 (isAccepted ) && <Accept width={24} height={24}/>
