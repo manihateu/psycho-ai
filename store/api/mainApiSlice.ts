@@ -28,7 +28,7 @@ type TAuthResponse = {
   refreshToken: string,
   accessToken: string
 }
-console.log('123')
+
 export const mainApiSlice = createApi({
   reducerPath: 'mainApi',
   baseQuery: fetchBaseQuery({ baseUrl: process.env.API_URL }),

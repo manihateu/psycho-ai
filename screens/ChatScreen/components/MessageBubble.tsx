@@ -9,7 +9,7 @@ type TMessageBubbleProps = {
 
 function MessageBubble({message, owner, owner_name}:TMessageBubbleProps) {
   return (
-    <View className= {`flex flex-row gap-x-3 items-end ${owner && "ml-auto flex-row-reverse"}`}>
+    <View className= {`flex pb-6 flex-row gap-x-3 items-end ${owner && "ml-auto flex-row-reverse"}`}>
       {owner ? 
         <View className='w-[32px] h-[32px] rounded-full bg-red-400 flex justify-center items-center'>
           <Text>
