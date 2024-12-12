@@ -3,6 +3,8 @@ import { private_routes, public_routes } from "./Routes";
 import { NavigationProp } from "@react-navigation/native";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
+import { useTokenPolling } from "../../store/api/mainApiSlice";
+import SplashScreen from "../../screens/SplashScreen/SplashScreen";
 
 export type ScreenNames = 
     typeof private_routes[number]["name"]
@@ -14,7 +16,8 @@ const Stack = createNativeStackNavigator <RootStackParamList> ();
 
 export const RootNavigator = () => {
     const isAuth = useSelector((state: RootState) => state.userAuth.isAuth)
-    console.log(isAuth)
+    const isLoading = useTokenPolling()
+    if (isLoading) return <SplashScreen />
     return (
         <Stack.Navigator>
             

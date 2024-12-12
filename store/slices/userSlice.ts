@@ -11,7 +11,7 @@ const userSlice = createSlice({
       state.isAuth = true
       state.accessToken = action.payload
     },
-    quit(state, action) {
+    quit(state) {
         state.isAuth = false;
         state.accessToken = ""
     },

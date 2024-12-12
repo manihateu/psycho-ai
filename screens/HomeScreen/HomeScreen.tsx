@@ -22,6 +22,8 @@ const HomeScreen = () => {
                 <FlatPlayCard />
                 <Text className="font-Comfortaa text-xl mt-[40px]">Для тебя</Text>
             </View>
+
+            
             
             <ScrollView horizontal className="mt-[20px] pl-[20px] gap-x-[20px]">
                 <TouchableOpacity className="">

@@ -8,8 +8,8 @@ async function getToken() {
 export const authorizeApiSlice = createApi({
   reducerPath: 'authorizeApi',
   baseQuery: fetchBaseQuery({
-    // baseUrl: process.env.API_URL,
-    baseUrl: "https://psycho-ai-backend.onrender.com",
+    baseUrl: process.env.API_URL,
+    // baseUrl: "https://psycho-ai-backend.onrender.com",
     prepareHeaders: async (headers) => {
       const token = await getToken();
       if (token) {
