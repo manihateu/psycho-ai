@@ -9,7 +9,7 @@ import Animated, {
   useAnimatedStyle
 } from 'react-native-reanimated'
 
-const Skeleton = () => {
+const Skeleton = ({style}) => {
   const opacity = useSharedValue(1)
 
   useEffect(() => {
@@ -33,7 +33,7 @@ const Skeleton = () => {
     }
   })
 
-  return <Animated.View style={[styles.skeleton, animatedStyle]} />
+  return <Animated.View style={[styles.skeleton, animatedStyle, style]} />
 }
 
 const styles = StyleSheet.create({

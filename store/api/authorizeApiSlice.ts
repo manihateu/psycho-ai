@@ -5,6 +5,13 @@ async function getToken() {
   return await AsyncStorage.getItem("x-token-access");
 }
 
+type TSendBotRequest = string
+type TSendbotResponse = {
+  model: string,
+  response: string,
+  created_at: string
+}
+
 export const authorizeApiSlice = createApi({
   reducerPath: 'authorizeApi',
   baseQuery: fetchBaseQuery({
@@ -24,8 +31,18 @@ export const authorizeApiSlice = createApi({
     }),
     getUser: builder.query({
         query: () => ({ url: "/users/user"})
+    }),
+    sendBotMessage: builder.mutation <TSendbotResponse, TSendBotRequest> ({
+        query: data => {console.log(data); return {
+          url: "/bot/send",
+          method: "POST",
+          body: {
+            message: data
+          },
+          timeout: 150000,
+        }}
     })
   }),
 });
 
-export const { useGetCategoriesQuery, useGetUserQuery } = authorizeApiSlice;
+export const { useGetCategoriesQuery, useGetUserQuery, useSendBotMessageMutation } = authorizeApiSlice;
