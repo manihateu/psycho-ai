@@ -29,7 +29,7 @@ export const RootNavigator = () => {
                 dispatch(select())
             }
         }
-        selectCategories
+        selectCategories()
     }, [])
     if (isLoading) return <SplashScreen />
     return (
