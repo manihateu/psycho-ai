@@ -2,10 +2,12 @@ import { configureStore } from '@reduxjs/toolkit'
 import { mainApiSlice } from './api/mainApiSlice'
 import { authorizeApiSlice } from './api/authorizeApiSlice'
 import userAuthReducer from './slices/userSlice'
+import CategoriesSliceReducer from './slices/CategoriesSlice'
 
 export const store = configureStore({
   reducer: {
     userAuth: userAuthReducer,
+    categoriesSlice: CategoriesSliceReducer,
     [mainApiSlice.reducerPath]: mainApiSlice.reducer,
     [authorizeApiSlice.reducerPath]: authorizeApiSlice.reducer
   },

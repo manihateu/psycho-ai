@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { Text, View } from 'react-native'
+import React, { useEffect, useState } from 'react'
+import { Dimensions, Text, View } from 'react-native'
 import ComSafeAreaView from '../../shared/ComSafeAreaView/ComSafeAreaView'
 import ChooseCard from './Components/ChooseCard'
 import ChooseCard1 from '../../assets/ChooseCard1.png'
@@ -8,6 +8,10 @@ import { useAssignCategoriesMutation, useGetCategoriesQuery } from '../../store/
 import ComButton from '../../shared/ComButton/ComButton'
 import { ScrollView } from 'react-native-gesture-handler'
 import { useNavigation } from '@react-navigation/native'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import Skeleton from '../../shared/ComSkeleton/ComSkeleton'
+import { useDispatch } from 'react-redux'
+import { select } from '../../store/slices/CategoriesSlice'
 
 const ChooseTopicScreen = () => {
     const {data, isLoading} = useGetCategoriesQuery({})
@@ -15,11 +19,14 @@ const ChooseTopicScreen = () => {
     const url = "http://92.252.240.206:3000"
     const [selected, setSelected] = useState<number[]>([])
     const navigation = useNavigation()
+    const dispatch = useDispatch()
     const assignToUser = async () => {
         try {
             if (selected.length !== 0) {
                 await assignCategories({categoryIds: selected})
+                await AsyncStorage.setItem('x-select-categories', "1")
                 navigation.navigate('HomeLayout')
+                dispatch(select())
             }
         } catch (error) {
             console.log(error)
@@ -43,10 +50,15 @@ const ChooseTopicScreen = () => {
             </Text>
         </View>
         <ScrollView>
-            <View className='flex flex-row flex-wrap flex-1 mt-5 justify-center'>
+            <View className={`flex flex-row flex-wrap flex-1 mt-5 justify-center ${isLoading && "gap-5 mt-5"}`}>
                 {
                     isLoading ?
-                    null
+                        <>
+                            <Skeleton style={{width: Dimensions.get('window').width / 2 - 32, height: 200}}/>
+                            <Skeleton style={{width: Dimensions.get('window').width / 2 - 32, height: 200}}/>
+                            <Skeleton style={{width: Dimensions.get('window').width / 2 - 32, height: 200}}/>
+                            <Skeleton style={{width: Dimensions.get('window').width / 2 - 32, height: 200}}/>
+                        </>
                     :
                     data.map((category: any) => 
                         <ChooseCard onPress={() => {
