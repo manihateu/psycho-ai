@@ -12,10 +12,6 @@ type TRoute = {
 
 export const public_routes: TRoute[] = [
     {
-        name: "ChooseTopicScreen",
-        component: ChooseTopicScreen
-    },
-    {
         name: "OnboardingScreen",
         component: OnboardingScreen
     },
@@ -34,6 +30,10 @@ export const public_routes: TRoute[] = [
 ]
 
 export const private_routes: TRoute[] = [
+    {
+        name: "ChooseTopicScreen",
+        component: ChooseTopicScreen
+    },
     {
         name: "HomeLayout",
         component: HomeLayout

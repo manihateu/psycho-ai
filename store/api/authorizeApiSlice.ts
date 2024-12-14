@@ -29,6 +29,13 @@ export const authorizeApiSlice = createApi({
     getCategories: builder.query({
       query: () => ({ url: '/categories' }),
     }),
+    assignCategories: builder.mutation<{categoryIds: number[]}, {categoryIds: number[]}>({
+      query: data => ({
+        url: '/categories/assign',
+        body: data,
+        method: 'POST'
+      })
+    }),
     getUser: builder.query({
         query: () => ({ url: "/users/user"})
     }),
@@ -41,8 +48,8 @@ export const authorizeApiSlice = createApi({
           },
           timeout: 150000,
         }}
-    })
+    }),
   }),
 });
 
-export const { useGetCategoriesQuery, useGetUserQuery, useSendBotMessageMutation } = authorizeApiSlice;
+export const { useGetCategoriesQuery, useGetUserQuery, useSendBotMessageMutation, useAssignCategoriesMutation } = authorizeApiSlice;

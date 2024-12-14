@@ -56,7 +56,7 @@ export const ChatScreen = () => {
         </ScrollView>
             <View style={{minWidth: Dimensions.get("screen").width}} className="absolute bottom-[9px] px-[16px] w-full flex-row  ">
                 <View style={{flex: 6}}>
-                    <ComInput onSubmit={handleSendMessage} value={value} onChange={setValue} placeholder="Задай свой вопрос..." classNames="flex-3"/>
+                    <ComInput value={value} onChange={setValue} placeholder="Задай свой вопрос..." classNames="flex-3"/>
                 </View>
                 <TouchableOpacity onPress={handleSendMessage} className="flex-1 justify-center  items-end">
                     <Arrow width={40} height={40}/>

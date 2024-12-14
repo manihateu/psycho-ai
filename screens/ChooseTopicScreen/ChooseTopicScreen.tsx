@@ -1,11 +1,32 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Text, View } from 'react-native'
 import ComSafeAreaView from '../../shared/ComSafeAreaView/ComSafeAreaView'
 import ChooseCard from './Components/ChooseCard'
 import ChooseCard1 from '../../assets/ChooseCard1.png'
 import ChooseCard2 from '../../assets/ChooseCard2.png'
+import { useAssignCategoriesMutation, useGetCategoriesQuery } from '../../store/api/authorizeApiSlice'
+import ComButton from '../../shared/ComButton/ComButton'
+import { ScrollView } from 'react-native-gesture-handler'
+import { useNavigation } from '@react-navigation/native'
 
 const ChooseTopicScreen = () => {
+    const {data, isLoading} = useGetCategoriesQuery({})
+    const [assignCategories, {isLoading: isLoadingAssign}] = useAssignCategoriesMutation()
+    const url = "http://92.252.240.206:3000"
+    const [selected, setSelected] = useState<number[]>([])
+    const navigation = useNavigation()
+    const assignToUser = async () => {
+        try {
+            if (selected.length !== 0) {
+                await assignCategories({categoryIds: selected})
+                navigation.navigate('HomeLayout')
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    console.log(selected)
   return (
     <ComSafeAreaView style={{backgroundColor: '#fff'} as any}>
         <View className='mt-2 p-4 w-full '> 
@@ -21,15 +42,30 @@ const ChooseTopicScreen = () => {
                 Выберите тему, на которой хотите сосредоточиться:
             </Text>
         </View>
-        <View className='flex flex-row flex-wrap h-full mt-5 justify-center'>
-            <ChooseCard title='Стресс'  textClassName='text-white ' background={ChooseCard1} classNameS='m-2.5 bg-[#9BA3FF] w-44 h-44'/>
-            <ChooseCard title='Личностный рост'  textClassName='text-white ' background={ChooseCard2} classNameS='m-2.5 bg-[#FA6E5A] w-44 h-44'/>
-            <ChooseCard title='Личностный рост'  textClassName='text-white ' background={ChooseCard1} classNameS='m-2.5 bg-[#9BA3FF] w-44 h-44'/>
-            <ChooseCard title='Личностный рост'  textClassName='text-white ' background={ChooseCard1} classNameS='m-2.5 bg-[#9BA3FF] w-44 h-44'/>
-
-
-        </View>
-        
+        <ScrollView>
+            <View className='flex flex-row flex-wrap flex-1 mt-5 justify-center'>
+                {
+                    isLoading ?
+                    null
+                    :
+                    data.map((category: any) => 
+                        <ChooseCard onPress={() => {
+                            if (selected.length !== 0 && !selected.includes(category.id, 0)) {
+                                setSelected((selected) => [...selected, category.id])
+                            }
+                            else if (selected.length == 0) {
+                                setSelected([category.id])
+                            }
+                            else if (selected.includes(category.id, 0)) {
+                                setSelected((selected) => selected.filter((elem) => elem !== category.id))
+                            }
+                            
+                        }} isSelected={selected.includes(category.id, 0)} key={category.id} title={category.name} textClassName='text-white' background={`${url}${category.imageurl}`.slice(0, -1)} classNameS='m-2.5 shadow bg-gray-200 w-44 h-44'/>
+                    )
+                }
+            </View>
+        </ScrollView>
+        <ComButton isLoading={isLoadingAssign} onPress={assignToUser} className='mb-5 mx-5' title='Сохранить' size='medium'/>
     </ComSafeAreaView>
   )
 }

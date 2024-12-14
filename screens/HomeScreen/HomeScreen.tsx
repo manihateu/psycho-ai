@@ -10,6 +10,7 @@ import Skeleton from "../../shared/ComSkeleton/ComSkeleton"
 
 const HomeScreen = () => {
     const{data, error, isLoading} = useGetUserQuery({})
+    console.log(data)
     return (
         <ScrollView className="w-full">
             <View className="px-[20px]">

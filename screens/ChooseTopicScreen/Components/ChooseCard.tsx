@@ -4,18 +4,19 @@ import { Image, ImageBackground, ImageSourcePropType, StyleProp, Text, Touchable
 
 type TChooseCardProp = {
     title: string,
-    background: ImageSourcePropType,
+    background: string,
     textClassName: string,
     classNameS: string,
-    
+    onPress?: () => void,
+    isSelected?: boolean
 }
 
-const ChooseCard = ({title, background, textClassName, classNameS} : TChooseCardProp) => {
+const ChooseCard = ({title, background, textClassName, classNameS, onPress, isSelected} : TChooseCardProp) => {
   return (
-    <TouchableOpacity >
+    <TouchableOpacity onPress={onPress} className='relative'>
         {
-            <View className= {`flex rounded-xl ${classNameS}`} >
-                <ImageBackground className=' ' source={background}>
+            <View style={{overflow: 'hidden'}} className= {`flex rounded-xl ${classNameS}`} >
+                <ImageBackground className='' source={{ uri: background }}>
                    <View className='h-full flex justify-end'>
                         <Text className={`font-Comfortaa mb-3 text-center text-base ${textClassName}`}>
                             {
@@ -28,8 +29,11 @@ const ChooseCard = ({title, background, textClassName, classNameS} : TChooseCard
                 
             </View> 
         }
-            
-        
+        {isSelected && 
+            <View className='absolute top-[15px] p-[5px] left-[15px] rounded-full shadow bg-white'>
+                <Text className='font-Comfortaa'>Выбрано</Text>
+            </View>
+        }
     </TouchableOpacity>
   )
 }
