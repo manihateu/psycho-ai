@@ -60,7 +60,7 @@ const ChooseTopicScreen = () => {
                                 setSelected((selected) => selected.filter((elem) => elem !== category.id))
                             }
                             
-                        }} isSelected={selected.includes(category.id, 0)} key={category.id} title={category.name} textClassName='text-white' background={`${url}${category.imageurl}`.slice(0, -1)} classNameS='m-2.5 shadow bg-gray-200 w-44 h-44'/>
+                        }} isSelected={selected.includes(category.id, 0)} key={category.id} title={category.name} textClassName='text-white' background={`${url}${category.imageurl}` [`${url}${category.imageurl}`.length - 1] == '}' ? `${url}${category.imageurl}`.slice(0, -1) :  `${url}${category.imageurl}`} classNameS='m-2.5 shadow bg-gray-200 w-44 h-44'/>
                     )
                 }
             </View>
