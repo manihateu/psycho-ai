@@ -23,13 +23,13 @@ export const public_routes: TRoute[] = [
         name: "SignUpScreen",
         component: SignUpScreen
     },
+]
+
+export const private_routes: TRoute[] = [
     {
         name: "WelcomeScreen",
         component: WelcomeScreen
     },
-]
-
-export const private_routes: TRoute[] = [
     {
         name: "ChooseTopicScreen",
         component: ChooseTopicScreen
