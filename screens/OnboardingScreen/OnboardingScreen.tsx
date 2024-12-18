@@ -21,22 +21,21 @@ const OnboardingScreen = () => {
             <Logo width={30} height={30} />
             <Text className='font-Comfortaa min-w-[102px] ml-[8px]'>Помощник</Text>
           </View>
-              <View className='flex items-center mt-16'>
-                <Image source={OnboardingLogo}/>
+              <View className='flex items-center mt-16 absolute w-full'>
+                <Image source={OnboardingLogo} className='w-full'/>
               </View>
-              <View className='flex mt-36 items-center'>
-                <Text className='font-Comfortaa text-2xl'>
-                  Начни работу с себя
-                </Text>
-              </View>
-              <View className='flex mt-4 mb-14'>
-                <Text className='w-full font-Comfortaa text-gray-400 text-base px-[18px] text-center'>
-                  Создано для поддержки ментального здоровья работников РЖД
-                </Text>
-              </View>
-                
-              
-              <ComAnimatedAppearance className=' w-full'>
+              <View className='flex-1 justify-center'>
+                  <View className='flex mt-36 items-center'>
+                  <Text className='font-Comfortaa text-2xl'>
+                    Начни работу с себя
+                  </Text>
+                </View>
+                <View className='flex mt-4 mb-14'>
+                  <Text className='w-full font-Comfortaa text-gray-400 text-base px-[18px] text-center'>
+                    Создано для поддержки ментального здоровья работников РЖД
+                  </Text>
+                </View>
+                <ComAnimatedAppearance className=' w-full'>
                 <ComButton onPress={() => navigate("SignUpScreen")} title='Зарегистрироваться' className='mx-3 my-2' size='medium'/>
               </ComAnimatedAppearance>
               <View className='flex flex-row w-full px-1 justify-center'>
@@ -49,6 +48,11 @@ const OnboardingScreen = () => {
                   </Text>
                 </Pressable>
               </View>
+              </View>
+              
+                
+              
+              
             
           </ImageBackground>
             

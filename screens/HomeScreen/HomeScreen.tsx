@@ -7,38 +7,48 @@ import { Image } from "react-native"
 import TopCard from "./FlatPlayCard/TopCard"
 import { useGetUserQuery } from "../../store/api/authorizeApiSlice"
 import Skeleton from "../../shared/ComSkeleton/ComSkeleton"
+import React, { useState } from "react"
+import ComCourseModal from "../../shared/ComCourseModal/ComCourseModal"
 
 const HomeScreen = () => {
     const{data, error, isLoading} = useGetUserQuery({})
+    const [openModal, setOpenModal] = useState(false)
+    console.log(openModal)
     console.log(data)
     return (
-        <ScrollView className="w-full">
-            <View className="px-[20px]">
-                <Text className="font-Comfortaa text-xl ">Доброе утро, {(isLoading) ? <Skeleton /> : data.name}!</Text>
-                <Text className="font-Comfortaa text-lg text-[#A1A4B2]">Мы желаем вам хорошего дня</Text>
-                <View className="flex flex-row justify-between gap-y-[20px] mt-[30px]">
-                    <TopCard image={mockCardImg1} title={"Основы"} subtitle={"Курс"} time_first={5} time_second={10} classNames="bg-[#8E97FD]"/>
-                    <TopCard image={mockCardImg2} title={"Основы"} subtitle={"Курс"} time_first={5} time_second={10} classNames="bg-[#FFC97E]"/>
+        <>
+            <ScrollView className="w-full">
+                <View className="">
+                    <Text className="font-Comfortaa text-xl px-[8px]">Доброе утро, {(isLoading) ? <Skeleton /> : data.name}!</Text>
+                    <Text className="font-Comfortaa text-lg text-[#A1A4B2] px-[8px]">Мы желаем вам хорошего дня</Text>
+                    <View className="px-[8px]">
+                        <View className="flex flex-row justify-between mt-[30px]">
+                            <TopCard onPress={() => {setOpenModal(true)}} image={mockCardImg1} title={"Основы"} subtitle={"Курс"} time_first={5} time_second={10} classNames="bg-[#8E97FD]"/>
+                            <TopCard onPress={() => {setOpenModal(true)}} image={mockCardImg2} title={"Основы"} subtitle={"Курс"} time_first={5} time_second={10} classNames="bg-[#FFC97E]"/>
+                        </View>
+                    </View>
+                    
+                    <FlatPlayCard />
+                    <Text className="font-Comfortaa text-xl mt-[40px] px-2">Для тебя</Text>
                 </View>
-                <FlatPlayCard />
-                <Text className="font-Comfortaa text-xl mt-[40px]">Для тебя</Text>
-            </View>
 
-            
-            
-            <ScrollView horizontal className="mt-[20px] pl-[20px] gap-x-[20px]">
-                <TouchableOpacity className="">
-                    <Image source={{uri: "https://a.d-cd.net/10e9348s-960.jpg"}} className="w-[162px] h-[115px] rounded-xl"/>
-                    <Text className="mt-[11px] font-Comfortaa">Фокус</Text>
-                    <Text className=" font-Comfortaa text-[#A1A4B2]">Медитация  3-10 МИН</Text>
-                </TouchableOpacity>
-                <TouchableOpacity className="">
-                    <Image source={{uri: "https://a.d-cd.net/10e9348s-960.jpg"}} className="w-[162px] h-[115px] rounded-xl"/>
-                    <Text className="mt-[11px] font-Comfortaa">Фокус</Text>
-                    <Text className=" font-Comfortaa text-[#A1A4B2]">Медитация  3-10 МИН</Text>
-                </TouchableOpacity>
+                
+                
+                <ScrollView horizontal className="mt-[20px]">
+                    <TouchableOpacity className="mx-[8px]">
+                        <Image source={{uri: "https://a.d-cd.net/10e9348s-960.jpg"}} className="w-[162px] h-[115px] rounded-xl"/>
+                        <Text className="mt-[11px] font-Comfortaa">Фокус</Text>
+                        <Text className=" font-Comfortaa text-[#A1A4B2]">Медитация  3-10 МИН</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity className="mx-[8px]">
+                        <Image source={{uri: "https://a.d-cd.net/10e9348s-960.jpg"}} className="w-[162px] h-[115px] rounded-xl"/>
+                        <Text className="mt-[11px] font-Comfortaa">Фокус</Text>
+                        <Text className=" font-Comfortaa text-[#A1A4B2]">Медитация  3-10 МИН</Text>
+                    </TouchableOpacity>
+                </ScrollView>
             </ScrollView>
-        </ScrollView>
+            <ComCourseModal open={openModal} setOpen={setOpenModal}/>
+        </>
     )
 }
 

@@ -22,7 +22,7 @@ const WelcomeScreen = () => {
                     <DarkLogo width={30} height={30}/>
                     <Text className='font-Comfortaa min-w-[102px] ml-[8px] text-white'>Помощник</Text>
                 </View>
-                <View className="w-full px-[11px] mt-[75px]">
+                <View className="w-full px-[11px] mt-[45px]">
                     <Text className="font-Comfortaa text-white text-[30px] text-center">
                         Добро пожаловать 
                         в Ментальный помощник

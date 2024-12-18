@@ -7,6 +7,7 @@ import { RootNavigator } from './components/RootNavigator/RootNavigator';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
+import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -29,9 +30,11 @@ export default function App() {
   return (
     <Provider store={store}>
       <GestureHandlerRootView style={{flex: 1}}>
-        <NavigationContainer>
-            <RootNavigator/>
-        </NavigationContainer>
+        <BottomSheetModalProvider>
+          <NavigationContainer>
+              <RootNavigator/>
+          </NavigationContainer>
+        </BottomSheetModalProvider>
       </GestureHandlerRootView>
     </Provider>
   );
