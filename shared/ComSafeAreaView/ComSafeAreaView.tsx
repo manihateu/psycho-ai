@@ -1,5 +1,5 @@
 import React from 'react'
-import { StatusBar, StyleProp, ViewProps } from 'react-native'
+import { StatusBar, StyleProp, View, ViewProps } from 'react-native'
 import { SafeAreaView } from 'react-native'
 
 type TComSafeAreaViewProps = {
@@ -10,7 +10,7 @@ type TComSafeAreaViewProps = {
 
 const ComSafeAreaView = ({children, style, className} : TComSafeAreaViewProps) => {
   return (
-    <SafeAreaView className={className} style={[{marginTop: StatusBar.currentHeight, flex: 1, position: 'relative'}, style]} >{children}</SafeAreaView>
+    <View className={className} style={[{marginTop: StatusBar.currentHeight, flex: 1, position: 'relative'}, style]} >{children}</View>
   )
 }
 

@@ -6,7 +6,9 @@
     "start": "expo start --clear",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "build:AndroidAPK": "eas build -p android --profile preview",
+    "build:AndroidAAB": "eas build -p android --profile production"
   },
   "dependencies": {
     "@gorhom/bottom-sheet": "^5.0.6",

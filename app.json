@@ -19,13 +19,19 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/logo.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.manihateu.psychoai"
     },
     "web": {
       "favicon": "./assets/logo.png"
     },
     "plugins": [
       "expo-font"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "dcebdadc-9a46-414b-bf39-a5b68b39286c"
+      }
+    }
   }
 }
