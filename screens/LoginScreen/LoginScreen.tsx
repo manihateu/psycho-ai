@@ -1,5 +1,5 @@
 
-import { ImageBackground, Pressable, StatusBar, Text, TouchableOpacity, View } from 'react-native'
+import { ImageBackground, Keyboard, Platform, Pressable, StatusBar, Text, TouchableOpacity, TouchableWithoutFeedback, View } from 'react-native'
 import ComSafeAreaView from '../../shared/ComSafeAreaView/ComSafeAreaView'
 import LoginBG from '../../assets/LoginBackground.png'
 import ComInput from '../../shared/ComInput/ComInput'
@@ -14,6 +14,7 @@ import { useLoginMutation } from '../../store/api/mainApiSlice'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { loginAction } from '../../store/slices/userSlice'
 import { useDispatch } from 'react-redux'
+import { toast } from '@backpackapp-io/react-native-toast'
 
 const LoginScreen = () => {
     const {goBack} = useNavigation();
@@ -35,13 +36,20 @@ const LoginScreen = () => {
           await AsyncStorage.setItem("x-token-access", data.accessToken)
           await AsyncStorage.setItem("x-token-refresh", data.refreshToken)
           dispath(loginAction(data.accessToken))
+          toast("Добро пожаловать!")
         } catch (e) {
+          if (e.error) {
+            toast.error(`Произошла ошибка! \n${e.error}`)
+          } else {
+            toast.error(`Произошла ошибка! \n${e}`)
+          }
           console.log(e)
         }
     })
   return (
     <ComSafeAreaView className='bg-white'>
-        <TouchableOpacity onPress={goBack} className='absolute rounded-full border border-[1px] border-[#EBEAEC] w-[55px] h-[55px] z-[999] bg-white top-[20px] left-[20px] flex justify-center items-center'>
+      <Pressable onPress={() => {Keyboard.dismiss()}} accessible={false}>
+        <TouchableOpacity onPress={goBack} className='absolute rounded-full border border-[1px] top-[20px] border-[#EBEAEC] w-[55px] h-[55px] z-[999] bg-white top-[20px] left-[20px] flex justify-center items-center'>
             <Arrow width={18} height={18}/>
         </TouchableOpacity>
         <View className='h-1/3'>
@@ -122,6 +130,7 @@ const LoginScreen = () => {
             </Text>
           </Pressable>
         </View>
+      </Pressable>
     </ComSafeAreaView>
   )
 }

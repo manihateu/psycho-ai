@@ -8,6 +8,8 @@ import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { Toasts } from '@backpackapp-io/react-native-toast';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -29,13 +31,16 @@ export default function App() {
 
   return (
     <Provider store={store}>
-      <GestureHandlerRootView style={{flex: 1}}>
-        <BottomSheetModalProvider>
-          <NavigationContainer>
-              <RootNavigator/>
-          </NavigationContainer>
-        </BottomSheetModalProvider>
-      </GestureHandlerRootView>
+      <SafeAreaProvider>
+        <GestureHandlerRootView style={{flex: 1}}>
+          <BottomSheetModalProvider>
+            <NavigationContainer>
+                <RootNavigator/>
+            </NavigationContainer>
+            <Toasts/>
+          </BottomSheetModalProvider>
+        </GestureHandlerRootView>
+      </SafeAreaProvider>
     </Provider>
   );
 }

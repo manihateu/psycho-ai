@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import SpinerSVG from '../../assets/spinner.svg'
+import SpinerSVG from '../../assets/logo.svg'
 import Animated, { cancelAnimation, Easing, useAnimatedStyle, useSharedValue, withRepeat, withTiming } from 'react-native-reanimated';
 
 const Loader = () => {
