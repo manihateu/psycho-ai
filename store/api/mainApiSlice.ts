@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { loginAction, quit } from '../slices/userSlice'
 import { RootState } from '../store'
+import { useQuit } from '../../shared/hooks/useQuit'
+import { toast } from '@backpackapp-io/react-native-toast'
 
 export type TRegisterBody = { 
   name: string,
@@ -61,6 +63,7 @@ export const mainApiSlice = createApi({
 export const { useLoginMutation, useRegisterMutation, useRefreshTokenMutation } = mainApiSlice
 
 export const useTokenPolling = () => {
+  const { quitHandler } = useQuit()
   const [refreshTokenMutation] = useRefreshTokenMutation();
   const dispath = useDispatch()
   const [isLoading, setIsLoading] = useState(false)
@@ -82,7 +85,8 @@ export const useTokenPolling = () => {
         dispath(loginAction(accessToken))
       } catch (error) {
         console.error('Failed to refresh token:', error);
-        dispath(quit())
+        toast("Ошибка при обновлении токена")
+        await quitHandler()
         setIsLoading(false)
       } finally {
         setIsLoading(false)
