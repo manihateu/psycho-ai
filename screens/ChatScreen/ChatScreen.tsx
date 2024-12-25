@@ -6,6 +6,7 @@ import { useGetUserQuery, useSendBotMessageMutation } from "../../store/api/auth
 import Arrow from "../../assets/arrow.svg"
 import { ScrollView } from "react-native-gesture-handler"
 import Skeleton from "../../shared/ComSkeleton/ComSkeleton"
+import ComAnimatedKeyboardAvoiding from "../../shared/ComAnimatedKeyboardAvoiding/ComAnimatedKeyboardAvoiding"
 
 
 export const ChatScreen = () => {
@@ -54,6 +55,7 @@ export const ChatScreen = () => {
             }     
 
         </ScrollView>
+        <ComAnimatedKeyboardAvoiding>
             <View style={{minWidth: Dimensions.get("screen").width}} className="absolute bottom-[9px] px-[16px] w-full flex-row  ">
                 <View style={{flex: 6}}>
                     <ComInput value={value} onChange={setValue} placeholder="Задай свой вопрос..." classNames="flex-3"/>
@@ -63,6 +65,7 @@ export const ChatScreen = () => {
                 </TouchableOpacity>
 
             </View>
+        </ComAnimatedKeyboardAvoiding>
         </>
     )
 }
