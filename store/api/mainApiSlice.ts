@@ -67,7 +67,6 @@ export const useTokenPolling = () => {
   const [refreshTokenMutation] = useRefreshTokenMutation();
   const dispath = useDispatch()
   const [isLoading, setIsLoading] = useState(false)
-  const isAuth = useSelector((state: RootState) => state.userAuth.isAuth)
   useEffect(() => {
     const refresh = async () => {
       const refreshToken = await AsyncStorage.getItem('x-token-refresh');
@@ -113,7 +112,7 @@ export const useTokenPolling = () => {
           dispath(loginAction(accessToken))
         } catch (error) {
           console.error('Failed to refresh token:', error);
-          dispath(quit())
+          await quitHandler()
         }
       }, 14 * 60 * 1000); 
 
