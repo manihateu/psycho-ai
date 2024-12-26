@@ -1,5 +1,5 @@
-import { View, Image, Text, Dimensions } from 'react-native';
 import ComButton from '../../../shared/ComButton/ComButton';
+import { Dimensions, Image, Text, View } from 'react-native';
 
 const TopCard = ({ image, title, subtitle, time_first, time_second, classNames, onPress }) => (
     <View

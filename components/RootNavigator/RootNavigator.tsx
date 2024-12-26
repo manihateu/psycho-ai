@@ -1,13 +1,13 @@
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { private_routes, public_routes } from './Routes';
-import { NavigationProp } from '@react-navigation/native';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../store/store';
-import { useTokenPolling } from '../../store/api/mainApiSlice';
 import SplashScreen from '../../screens/SplashScreen/SplashScreen';
-import { useEffect, useState } from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useTokenPolling } from '../../store/api/mainApiSlice';
 import { select } from '../../store/slices/CategoriesSlice';
+import { RootState } from '../../store/store';
+import { private_routes, public_routes } from './Routes';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { NavigationProp } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 export type ScreenNames = (typeof private_routes)[number]['name'];
 

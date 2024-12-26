@@ -1,3 +1,17 @@
+import Arrow from '../../assets/BackArrow.svg';
+import LoginBG from '../../assets/LoginBackground.png';
+import ComButton from '../../shared/ComButton/ComButton';
+import ComInput from '../../shared/ComInput/ComInput';
+import ComSafeAreaView from '../../shared/ComSafeAreaView/ComSafeAreaView';
+import { useLoginMutation } from '../../store/api/mainApiSlice';
+import { loginAction } from '../../store/slices/userSlice';
+import { LoginSchema, LoginSchemaData } from './form.validation';
+import { toast } from '@backpackapp-io/react-native-toast';
+import { zodResolver } from '@hookform/resolvers/zod';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useNavigation } from '@react-navigation/native';
+import React, { useEffect, useState } from 'react';
+import { Controller, useForm } from 'react-hook-form';
 import {
     ImageBackground,
     Keyboard,
@@ -9,21 +23,7 @@ import {
     TouchableWithoutFeedback,
     View,
 } from 'react-native';
-import ComSafeAreaView from '../../shared/ComSafeAreaView/ComSafeAreaView';
-import LoginBG from '../../assets/LoginBackground.png';
-import ComInput from '../../shared/ComInput/ComInput';
-import ComButton from '../../shared/ComButton/ComButton';
-import Arrow from '../../assets/BackArrow.svg';
-import { useNavigation } from '@react-navigation/native';
-import React, { useEffect, useState } from 'react';
-import { Controller, useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { LoginSchema, LoginSchemaData } from './form.validation';
-import { useLoginMutation } from '../../store/api/mainApiSlice';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { loginAction } from '../../store/slices/userSlice';
 import { useDispatch } from 'react-redux';
-import { toast } from '@backpackapp-io/react-native-toast';
 
 const LoginScreen = () => {
     const { goBack } = useNavigation();

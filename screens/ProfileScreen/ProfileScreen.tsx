@@ -1,23 +1,23 @@
-import {
-    View,
-    Text,
-    Dimensions,
-    TouchableOpacity,
-    ScrollView,
-    ImageBackground,
-} from 'react-native';
-import { useGetUserQuery } from '../../store/api/authorizeApiSlice';
-import { mixins } from '../../constans';
-import { Image } from 'react-native';
 import Play from '../../assets/Play.svg';
+import Categories from '../../assets/categoryes.svg';
+import Edit from '../../assets/edit.svg';
 import Like from '../../assets/favorits.svg';
 import Listening from '../../assets/listening.svg';
-import Edit from '../../assets/edit.svg';
 import Options from '../../assets/options.svg';
-import Categories from '../../assets/categoryes.svg';
 import Quit from '../../assets/quit.svg';
+import { mixins } from '../../constans';
 import { useQuit } from '../../shared/hooks/useQuit';
+import { useGetUserQuery } from '../../store/api/authorizeApiSlice';
 import { toast } from '@backpackapp-io/react-native-toast';
+import {
+    Dimensions,
+    ImageBackground,
+    ScrollView,
+    Text,
+    TouchableOpacity,
+    View,
+} from 'react-native';
+import { Image } from 'react-native';
 
 const ProfileScreen = () => {
     const { data, error, isLoading } = useGetUserQuery({});

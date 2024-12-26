@@ -1,8 +1,8 @@
+import Accept from '../../assets/accept.svg';
+import NoneVisible from '../../assets/isNoneVisible.svg';
+import Visible from '../../assets/visible.svg';
 import React, { useState } from 'react';
 import { Keyboard, Pressable, Text, TextInput, View } from 'react-native';
-import Accept from '../../assets/accept.svg';
-import Visible from '../../assets/visible.svg';
-import NoneVisible from '../../assets/isNoneVisible.svg';
 
 type TComInputProps = {
     placeholder: string;

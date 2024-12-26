@@ -1,5 +1,5 @@
-import LottieView from 'lottie-react-native';
 import ComSafeAreaView from '../../shared/ComSafeAreaView/ComSafeAreaView';
+import LottieView from 'lottie-react-native';
 import { Dimensions } from 'react-native';
 
 const SplashScreen = () => {

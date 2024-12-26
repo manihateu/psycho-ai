@@ -1,5 +1,5 @@
-import { Pressable, StyleProp, Text, TextStyle, TouchableOpacity, ViewStyle } from 'react-native';
 import Loader from '../Loader/Loader';
+import { Pressable, StyleProp, Text, TextStyle, TouchableOpacity, ViewStyle } from 'react-native';
 
 type TComButtonProps = {
     style?: StyleProp<ViewStyle>;

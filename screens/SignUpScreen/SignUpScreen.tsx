@@ -1,4 +1,19 @@
+import Arrow from '../../assets/BackArrow.svg';
+import LoginBG from '../../assets/LoginBackground.png';
+import { StackNavigation } from '../../components/RootNavigator/RootNavigator';
+import ComButton from '../../shared/ComButton/ComButton';
+import ComCheckbox from '../../shared/ComCheckbox/ComCheckbox';
+import ComInput from '../../shared/ComInput/ComInput';
+import ComSafeAreaView from '../../shared/ComSafeAreaView/ComSafeAreaView';
+import { TRegisterBody, useRegisterMutation } from '../../store/api/mainApiSlice';
+import { loginAction } from '../../store/slices/userSlice';
+import { SignUpSchema, SignUpSchemaData } from './form.validation';
+import { toast } from '@backpackapp-io/react-native-toast';
+import { zodResolver } from '@hookform/resolvers/zod';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
+import { Controller, useForm } from 'react-hook-form';
 import {
     ImageBackground,
     Keyboard,
@@ -9,22 +24,7 @@ import {
     TouchableOpacity,
     View,
 } from 'react-native';
-import ComSafeAreaView from '../../shared/ComSafeAreaView/ComSafeAreaView';
-import LoginBG from '../../assets/LoginBackground.png';
-import ComInput from '../../shared/ComInput/ComInput';
-import ComButton from '../../shared/ComButton/ComButton';
-import ComCheckbox from '../../shared/ComCheckbox/ComCheckbox';
-import Arrow from '../../assets/BackArrow.svg';
-import { useNavigation } from '@react-navigation/native';
-import { StackNavigation } from '../../components/RootNavigator/RootNavigator';
-import { Controller, useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { SignUpSchema, SignUpSchemaData } from './form.validation';
-import { TRegisterBody, useRegisterMutation } from '../../store/api/mainApiSlice';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useDispatch } from 'react-redux';
-import { loginAction } from '../../store/slices/userSlice';
-import { toast } from '@backpackapp-io/react-native-toast';
 
 const SignUpScreen = () => {
     const { goBack, navigate } = useNavigation<StackNavigation>();

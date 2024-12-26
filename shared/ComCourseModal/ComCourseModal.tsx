@@ -1,17 +1,17 @@
-import { BottomSheetModal, BottomSheetView } from '@gorhom/bottom-sheet';
-import { useCallback, useRef, useEffect } from 'react';
-import { Image, ScrollView, Text, TouchableOpacity, View } from 'react-native';
-import MockBgCourse from '../../assets/mock-bg-course.png';
-import Like from '../../assets/like.svg';
+import Play from '../../assets/Play.svg';
 import Download from '../../assets/download.svg';
 import Favorites from '../../assets/favorits.svg';
+import Like from '../../assets/like.svg';
 import Listening from '../../assets/listening.svg';
-import Play from '../../assets/Play.svg';
+import MockBgCourse from '../../assets/mock-bg-course.png';
+import { BottomSheetModal, BottomSheetView } from '@gorhom/bottom-sheet';
+import { useCallback, useEffect, useRef } from 'react';
+import { Image, ScrollView, Text, TouchableOpacity, View } from 'react-native';
 
 type TComCourseModalProps = {
-    open: boolean,
-    setOpen: (arg: boolean) => void
-}
+    open: boolean;
+    setOpen: (arg: boolean) => void;
+};
 
 const ComCourseModal = ({ open, setOpen }: TComCourseModalProps) => {
     const bottomSheetModalRef = useRef<BottomSheetModal>(null);

@@ -1,6 +1,6 @@
-import { useDispatch } from 'react-redux';
 import { quit } from '../../store/slices/userSlice';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useDispatch } from 'react-redux';
 
 export const useQuit = () => {
     const dispatch = useDispatch();
