@@ -1,11 +1,7 @@
-import { Text } from "react-native"
+import { Text } from 'react-native';
 
-const ComText = ({children}) => {
-    return (
-        <Text>
-            {children}
-        </Text>
-    )
-}
+const ComText = ({ children }) => {
+    return <Text>{children}</Text>;
+};
 
-export default ComText
+export default ComText;

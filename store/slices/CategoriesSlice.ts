@@ -1,16 +1,16 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
 
 const categoriesSlice = createSlice({
-  name: 'categoriesSlice',
-  initialState: {
-    selectCategories: false
-  },
-  reducers: {
-    select(state) {
-      state.selectCategories = true
+    name: 'categoriesSlice',
+    initialState: {
+        selectCategories: false,
     },
-  },
-})
+    reducers: {
+        select(state) {
+            state.selectCategories = true;
+        },
+    },
+});
 
-export const { select } = categoriesSlice.actions
-export default categoriesSlice.reducer
+export const { select } = categoriesSlice.actions;
+export default categoriesSlice.reducer;
