@@ -10,37 +10,37 @@ import { useEffect } from 'react';
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Toasts } from '@backpackapp-io/react-native-toast';
+import { Dimensions, StatusBar, View } from 'react-native';
 
 SplashScreen.preventAutoHideAsync();
 
 export default function App() {
-  const [loaded, error] = useFonts({
-    'Comfortaa': require('./assets/fonts/comfortaa/Comfortaa-VariableFont_wght.ttf'),
-  });
+    const [loaded, error] = useFonts({
+        Comfortaa: require('./assets/fonts/comfortaa/Comfortaa-VariableFont_wght.ttf'),
+    });
 
-  useEffect(() => {
-    if (loaded || error) {
-      SplashScreen.hideAsync();
+    useEffect(() => {
+        if (loaded || error) {
+            SplashScreen.hideAsync();
+        }
+    }, [loaded, error]);
+
+    if (!loaded && !error) {
+        return null;
     }
-  }, [loaded, error]);
 
-  if (!loaded && !error) {
-    return null;
-  }
-
-
-  return (
-    <Provider store={store}>
-      <SafeAreaProvider>
-        <GestureHandlerRootView style={{flex: 1}}>
-          <BottomSheetModalProvider>
-            <NavigationContainer>
-                <RootNavigator/>
-            </NavigationContainer>
-            <Toasts/>
-          </BottomSheetModalProvider>
-        </GestureHandlerRootView>
-      </SafeAreaProvider>
-    </Provider>
-  );
+    return (
+        <Provider store={store}>
+            <SafeAreaProvider>
+                <GestureHandlerRootView style={{ flex: 1 }}>
+                    <BottomSheetModalProvider>
+                        <NavigationContainer>
+                            <RootNavigator />
+                        </NavigationContainer>
+                        <Toasts />
+                    </BottomSheetModalProvider>
+                </GestureHandlerRootView>
+            </SafeAreaProvider>
+        </Provider>
+    );
 }
