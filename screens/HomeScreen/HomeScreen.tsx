@@ -13,13 +13,11 @@ import ComCourseModal from "../../shared/ComCourseModal/ComCourseModal"
 const HomeScreen = () => {
     const{data, error, isLoading} = useGetUserQuery({})
     const [openModal, setOpenModal] = useState(false)
-    console.log(openModal)
-    console.log(data)
     return (
         <>
             <ScrollView className="w-full">
                 <View className="">
-                    <Text className="font-Comfortaa text-xl px-[8px]">Доброе утро, {(isLoading) ? <Skeleton /> : data.name}!</Text>
+                    <Text className="font-Comfortaa text-xl px-[8px]">Доброе утро, {(isLoading) ? <Skeleton style={{}}/> : data.name}!</Text>
                     <Text className="font-Comfortaa text-lg text-[#A1A4B2] px-[8px]">Мы желаем вам хорошего дня</Text>
                     <View className="px-[8px]">
                         <View className="flex flex-row justify-between mt-[30px]">

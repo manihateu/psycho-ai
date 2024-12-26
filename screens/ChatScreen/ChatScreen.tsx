@@ -7,6 +7,7 @@ import Arrow from "../../assets/arrow.svg"
 import { ScrollView } from "react-native-gesture-handler"
 import Skeleton from "../../shared/ComSkeleton/ComSkeleton"
 import ComAnimatedKeyboardAvoiding from "../../shared/ComAnimatedKeyboardAvoiding/ComAnimatedKeyboardAvoiding"
+import React from "react"
 
 
 export const ChatScreen = () => {
@@ -18,6 +19,7 @@ export const ChatScreen = () => {
 
     const scrollToEnd = () => {
 		setTimeout(() => {
+          //@ts-ignore
 		  scrollViewRef?.current?.scrollToEnd({ animated: true });
 		}, 100);
 	};

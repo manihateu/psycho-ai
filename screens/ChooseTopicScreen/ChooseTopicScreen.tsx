@@ -12,13 +12,14 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import Skeleton from '../../shared/ComSkeleton/ComSkeleton'
 import { useDispatch } from 'react-redux'
 import { select } from '../../store/slices/CategoriesSlice'
+import { StackNavigation } from '../../components/RootNavigator/RootNavigator'
 
 const ChooseTopicScreen = () => {
     const {data, isLoading} = useGetCategoriesQuery({})
     const [assignCategories, {isLoading: isLoadingAssign}] = useAssignCategoriesMutation()
     const url = "http://92.252.240.206:3000"
     const [selected, setSelected] = useState<number[]>([])
-    const navigation = useNavigation()
+    const navigation = useNavigation<StackNavigation>()
     const dispatch = useDispatch()
     const assignToUser = async () => {
         try {

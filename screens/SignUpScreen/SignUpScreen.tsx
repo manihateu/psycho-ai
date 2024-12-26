@@ -41,7 +41,7 @@ const SignUpScreen = () => {
             await AsyncStorage.setItem("x-token-refresh", data.refreshToken)
             dispath(loginAction(data.accessToken))
             toast("Добро пожаловать!")
-        } catch (e) {
+        } catch (e: any) {
             console.log(e)
             if (e.error) {
                 toast.error(`Произошла ошибка! \n${e.error}`)

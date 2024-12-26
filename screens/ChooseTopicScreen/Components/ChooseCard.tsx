@@ -15,8 +15,7 @@ const ChooseCard = ({title, background, textClassName, classNameS, onPress, isSe
   return (
     <TouchableOpacity onPress={onPress} className='relative'>
         {
-            <View style={{overflow: 'hidden'}} className= {`flex rounded-xl ${classNameS}`} >
-                <ImageBackground className='' source={{ uri: background }}>
+                <ImageBackground style={{overflow: 'hidden'}} className= {`flex rounded-xl ${classNameS}`} source={{ uri: background }}>
                    <View className='h-full flex justify-end'>
                         <Text className={`font-Comfortaa mb-3 text-center text-base ${textClassName}`}>
                             {
@@ -27,7 +26,6 @@ const ChooseCard = ({title, background, textClassName, classNameS, onPress, isSe
                     
                 </ImageBackground>
                 
-            </View> 
         }
         {isSelected && 
             <View className='absolute top-[15px] p-[5px] left-[15px] rounded-full shadow bg-white'>

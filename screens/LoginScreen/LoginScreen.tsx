@@ -6,7 +6,7 @@ import ComInput from '../../shared/ComInput/ComInput'
 import ComButton from '../../shared/ComButton/ComButton'
 import Arrow from '../../assets/BackArrow.svg'
 import { useNavigation } from '@react-navigation/native'
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { LoginSchema, LoginSchemaData } from './form.validation'
@@ -37,7 +37,7 @@ const LoginScreen = () => {
           await AsyncStorage.setItem("x-token-refresh", data.refreshToken)
           dispath(loginAction(data.accessToken))
           toast("Добро пожаловать!")
-        } catch (e) {
+        } catch (e: any) {
           if (e.error) {
             toast.error(`Произошла ошибка! \n${e.error}`)
           } else {
