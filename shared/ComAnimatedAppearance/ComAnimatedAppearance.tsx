@@ -1,7 +1,12 @@
 import { useEffect } from 'react';
 import Animated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
 
-export const ComAnimatedAppearance = ({ children, className = '' }) => {
+type TComAnimatedAppearanceProps = {
+    children?: React.ReactNode,
+    className?: string
+}
+
+export const ComAnimatedAppearance = ({ children, className = '' }: TComAnimatedAppearanceProps) => {
     const translateY = useSharedValue(300);
 
     const animatedStyle = useAnimatedStyle(() => {

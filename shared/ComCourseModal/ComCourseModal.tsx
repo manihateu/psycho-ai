@@ -8,7 +8,12 @@ import Favorites from '../../assets/favorits.svg';
 import Listening from '../../assets/listening.svg';
 import Play from '../../assets/Play.svg';
 
-const ComCourseModal = ({ open, setOpen }) => {
+type TComCourseModalProps = {
+    open: boolean,
+    setOpen: (arg: boolean) => void
+}
+
+const ComCourseModal = ({ open, setOpen }: TComCourseModalProps) => {
     const bottomSheetModalRef = useRef<BottomSheetModal>(null);
     const handleSheetChanges = useCallback((index: number) => {
         console.log('handleSheetChanges', index);
