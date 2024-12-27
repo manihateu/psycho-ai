@@ -10,6 +10,7 @@ import { View } from 'react-native';
 import FlatPlayCard from './FlatPlayCard/FlatPlayCard';
 import mockCardImg1 from '../../assets/mockCardImg1.png';
 import mockCardImg2 from '../../assets/mockCardImg2.png';
+import mockCardBottom from '../../assets/mainCardBgMock.png'
 import { Image } from 'react-native';
 import TopCard from './FlatPlayCard/TopCard';
 import { useGetUserQuery } from '../../store/api/authorizeApiSlice';
@@ -64,7 +65,7 @@ const HomeScreen = () => {
                 <ScrollView horizontal className="mt-[20px]">
                     <TouchableOpacity className="mx-[8px]">
                         <Image
-                            source={{ uri: 'https://a.d-cd.net/10e9348s-960.jpg' }}
+                            source={mockCardBottom}
                             className="w-[162px] h-[115px] rounded-xl"
                         />
                         <Text className="mt-[11px] font-Comfortaa">Фокус</Text>
@@ -72,7 +73,7 @@ const HomeScreen = () => {
                     </TouchableOpacity>
                     <TouchableOpacity className="mx-[8px]">
                         <Image
-                            source={{ uri: 'https://a.d-cd.net/10e9348s-960.jpg' }}
+                            source={mockCardBottom}
                             className="w-[162px] h-[115px] rounded-xl"
                         />
                         <Text className="mt-[11px] font-Comfortaa">Фокус</Text>
