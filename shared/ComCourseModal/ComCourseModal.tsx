@@ -33,7 +33,7 @@ const ComCourseModal = ({ open, setOpen }: TComCourseModalProps) => {
                 setOpen(false);
             }}
             style={{ borderRadius: 32 }}
-            snapPoints={['90%']}
+            snapPoints={['50%', "100%"]}
         >
             <BottomSheetView style={{ flex: 1 }}>
                 <View className="absolute flex flex-row items-center top-[20px] right-[20px] z-[999] gap-x-2">
