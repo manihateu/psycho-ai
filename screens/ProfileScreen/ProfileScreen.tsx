@@ -18,6 +18,8 @@ import Categories from '../../assets/categoryes.svg';
 import Quit from '../../assets/quit.svg';
 import { useQuit } from '../../shared/hooks/useQuit';
 import { toast } from '@backpackapp-io/react-native-toast';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigation } from '../../components/RootNavigator/RootNavigator';
 
 const ProfileScreen = () => {
     const { data, error, isLoading } = useGetUserQuery({});
@@ -25,6 +27,7 @@ const ProfileScreen = () => {
         toast.error('Произошла ошибка');
     }
     const { quitHandler } = useQuit();
+    const navigation = useNavigation<StackNavigation>();
     return (
         <ScrollView className="py-3">
             <View className="w-full flex flex-row justify-around">
@@ -58,6 +61,9 @@ const ProfileScreen = () => {
             </View>
             <View className="w-full flex flex-row justify-around mt-3">
                 <TouchableOpacity
+                    onPress={() => {
+                        navigation.navigate('LikedScreen');
+                    }}
                     className="rounded-3xl p-3 shandow bg-white relative"
                     style={[
                         { minWidth: Dimensions.get('window').width / 2 - 16, minHeight: 150 },
