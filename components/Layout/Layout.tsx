@@ -46,7 +46,7 @@ const Layout = ({ children, canBack, noBottom, selected, setSelectedPage }: TLay
             <ImageBackground source={LayoutBg} className="flex-1 w-full bg-white">
                 {children}
             </ImageBackground>
-            {!noBottom && (
+            {!noBottom && setSelectedPage && (
                 <View className="bg-white flex flex-row py-3 justify-around" style={mixins.shadow}>
                     <TouchableOpacity
                         onPress={() => setSelectedPage(0)}

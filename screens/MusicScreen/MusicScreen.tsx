@@ -4,6 +4,7 @@ import Liked from '../../assets/LikedFilterIcon.svg'
 import Kids from '../../assets/KidsFilterIcon.svg'
 import Anxioumus from '../../assets/AnxiomusFilterIcon.svg'
 import { BlurView } from "expo-blur"
+import React from "react"
 
 const MusicScreen = () => {
     return (
