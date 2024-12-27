@@ -1,6 +1,6 @@
 import { BottomSheetModal, BottomSheetView } from '@gorhom/bottom-sheet';
 import { useCallback, useRef, useEffect } from 'react';
-import { Image, ScrollView, Text, TouchableOpacity, View } from 'react-native';
+import { Image, Platform, ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import MockBgCourse from '../../assets/mock-bg-course.png';
 import Like from '../../assets/like.svg';
 import Download from '../../assets/download.svg';
@@ -33,7 +33,7 @@ const ComCourseModal = ({ open, setOpen }: TComCourseModalProps) => {
                 setOpen(false);
             }}
             style={{ borderRadius: 32 }}
-            snapPoints={['50%', "100%"]}
+            snapPoints={Platform.OS == "android" ? ["50%","100%"] : ["50%","90%"]}
         >
             <BottomSheetView style={{ flex: 1 }}>
                 <View className="absolute flex flex-row items-center top-[20px] right-[20px] z-[999] gap-x-2">

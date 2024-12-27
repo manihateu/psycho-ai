@@ -37,44 +37,7 @@ const MusicScreen = () => {
                     <Text className="font-ComfortaaBold text-[16px] text-gray-400">Тревога</Text>
                 </TouchableOpacity>
             </ScrollView>
-            <ScrollView  className="px-[14px] pt-[15px]">
-                <View className="flex flex-row justify-center w-full mb-3">
-                    <ImageBackground source={{ uri: 'https://a.d-cd.net/10e9348s-960.jpg' }} imageStyle={{borderRadius: 16}} className="min-h-[200px]" style={{width: Dimensions.get('screen').width / 2 - 14}}>
-                        <BlurView intensity={100}  className="mt-auto w-full p-3 rounded-b-2xl">
-                            <Text className="font-ComfortaaBold">7 дней расслабления</Text>
-                        </BlurView>
-                    </ImageBackground>
-                    <ImageBackground source={{ uri: 'https://a.d-cd.net/10e9348s-960.jpg' }} imageStyle={{borderRadius: 16}} className="min-h-[200px] ml-3" style={{width: Dimensions.get('screen').width / 2 - 14}}>
-                        <BlurView intensity={100}  className="mt-auto w-full p-3 rounded-b-2xl">
-                            <Text className="font-ComfortaaBold">7 дней расслабления</Text>
-                        </BlurView>
-                    </ImageBackground>
-                </View>
-                <View className="flex flex-row justify-center w-full mb-3">
-                    <ImageBackground source={{ uri: 'https://a.d-cd.net/10e9348s-960.jpg' }} imageStyle={{borderRadius: 16}} className="min-h-[200px]" style={{width: Dimensions.get('screen').width / 2 - 14}}>
-                        <BlurView intensity={100}  className="mt-auto w-full p-3 rounded-b-2xl">
-                            <Text className="font-ComfortaaBold">7 дней расслабления</Text>
-                        </BlurView>
-                    </ImageBackground>
-                    <ImageBackground source={{ uri: 'https://a.d-cd.net/10e9348s-960.jpg' }} imageStyle={{borderRadius: 16}} className="min-h-[200px] ml-3" style={{width: Dimensions.get('screen').width / 2 - 14}}>
-                        <BlurView intensity={100}  className="mt-auto w-full p-3 rounded-b-2xl">
-                            <Text className="font-ComfortaaBold">7 дней расслабления</Text>
-                        </BlurView>
-                    </ImageBackground>
-                </View>
-                <View className="flex flex-row justify-center w-full  mb-3">
-                    <ImageBackground source={{ uri: 'https://a.d-cd.net/10e9348s-960.jpg' }} imageStyle={{borderRadius: 16}} className="min-h-[200px]" style={{width: Dimensions.get('screen').width / 2 - 14}}>
-                        <BlurView intensity={100}  className="mt-auto w-full p-3 rounded-b-2xl">
-                            <Text className="font-ComfortaaBold">7 дней расслабления</Text>
-                        </BlurView>
-                    </ImageBackground>
-                    <ImageBackground source={{ uri: 'https://a.d-cd.net/10e9348s-960.jpg' }} imageStyle={{borderRadius: 16}} className="min-h-[200px] ml-3" style={{width: Dimensions.get('screen').width / 2 - 14}}>
-                        <BlurView intensity={100}  className="mt-auto w-full p-3 rounded-b-2xl">
-                            <Text className="font-ComfortaaBold">7 дней расслабления</Text>
-                        </BlurView>
-                    </ImageBackground>
-                </View>
-            </ScrollView>
+            
         </>
     )
 }

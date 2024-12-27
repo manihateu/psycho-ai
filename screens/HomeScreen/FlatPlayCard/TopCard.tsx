@@ -3,10 +3,10 @@ import ComButton from '../../../shared/ComButton/ComButton';
 
 const TopCard = ({ image, title, subtitle, time_first, time_second, classNames, onPress }) => (
     <View
-        className={`rounded-xl min-h-[210px] ${classNames}`}
+        className={`rounded-3xl min-h-[210px] ${classNames}`}
         style={{ width: Dimensions.get('screen').width / 2 - 8 - 8 }}
     >
-        <Image source={image} className="ml-auto rounded-tr-xl " />
+        <Image source={image} className="ml-auto rounded-tr-3xl " />
         <Text className="font-Comfortaa text-white px-[15px]">{title}</Text>
         <Text className="font-Comfortaa text-white px-[15px]">{subtitle}</Text>
         <View className="mt-auto flex flex-row justify-between items-center px-[15px] mb-[12px] flex-wrap-reverse">
