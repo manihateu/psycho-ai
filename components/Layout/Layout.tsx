@@ -9,6 +9,7 @@ import Svg, { Path } from 'react-native-svg';
 import LayoutBg from '../../assets/LayoutBg.png';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigation } from '../RootNavigator/RootNavigator';
+import { mixins } from '../../constans';
 
 type TLayoutProps = {
     children?: any;
@@ -46,7 +47,7 @@ const Layout = ({ children, canBack, noBottom, selected, setSelectedPage }: TLay
                 {children}
             </ImageBackground>
             {!noBottom && (
-                <View className="bg-white flex flex-row py-3 justify-around">
+                <View className="bg-white flex flex-row py-3 justify-around" style={mixins.shadow}>
                     <TouchableOpacity
                         onPress={() => setSelectedPage(0)}
                         disabled={selected == 0}

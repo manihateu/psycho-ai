@@ -5,6 +5,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import SplashScreen from '../SplashScreen/SplashScreen';
 import { ChatScreen } from '../ChatScreen/ChatScreen';
 import ProfileScreen from '../ProfileScreen/ProfileScreen';
+import MusicScreen from '../MusicScreen/MusicScreen';
 
 const pages = [
     {
@@ -17,7 +18,7 @@ const pages = [
         name: 'ChatScreen',
     },
     {
-        name: 'b',
+        name: 'MusicScreen',
     },
     {
         name: 'ProfileScreen',
@@ -33,6 +34,7 @@ const HomeLayout = () => {
             {pages[selectedPage]?.name == 'HomeScreen' && <HomeScreen />}
             {pages[selectedPage]?.name == 'ChatScreen' && <ChatScreen />}
             {pages[selectedPage]?.name == 'ProfileScreen' && <ProfileScreen />}
+            {pages[selectedPage]?.name == 'MusicScreen' && <MusicScreen />}
         </Layout>
     );
 };

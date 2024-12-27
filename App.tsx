@@ -17,6 +17,7 @@ SplashScreen.preventAutoHideAsync();
 export default function App() {
     const [loaded, error] = useFonts({
         Comfortaa: require('./assets/fonts/comfortaa/Comfortaa-VariableFont_wght.ttf'),
+        ComfortaaBold: require('./assets/fonts/comfortaa/static/Comfortaa-Bold.ttf'),
     });
 
     useEffect(() => {
