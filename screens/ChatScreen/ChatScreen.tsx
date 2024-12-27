@@ -1,13 +1,13 @@
-import Arrow from '../../assets/arrow.svg';
-import ComAnimatedKeyboardAvoiding from '../../shared/ComAnimatedKeyboardAvoiding/ComAnimatedKeyboardAvoiding';
 import ComInput from '../../shared/ComInput/ComInput';
-import Skeleton from '../../shared/ComSkeleton/ComSkeleton';
-import { useGetUserQuery, useSendBotMessageMutation } from '../../store/api/authorizeApiSlice';
-import MessageBubble from './components/MessageBubble';
 import { useEffect, useRef, useState } from 'react';
-import React from 'react';
 import { Dimensions, NativeModules, TouchableOpacity, View } from 'react-native';
+import MessageBubble from './components/MessageBubble';
+import { useGetUserQuery, useSendBotMessageMutation } from '../../store/api/authorizeApiSlice';
+import Arrow from '../../assets/arrow.svg';
 import { ScrollView } from 'react-native-gesture-handler';
+import Skeleton from '../../shared/ComSkeleton/ComSkeleton';
+import ComAnimatedKeyboardAvoiding from '../../shared/ComAnimatedKeyboardAvoiding/ComAnimatedKeyboardAvoiding';
+import React from 'react';
 
 export const ChatScreen = () => {
     const [sendBotMessage, { isLoading: sendLoading }] = useSendBotMessageMutation();

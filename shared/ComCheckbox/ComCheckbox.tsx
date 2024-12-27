@@ -1,5 +1,5 @@
-import CheckSVG from '../../assets/check.svg';
 import { Pressable, StyleSheet, View } from 'react-native';
+import CheckSVG from '../../assets/check.svg';
 
 type TComCheckboxProps = {
     checked: boolean;

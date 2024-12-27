@@ -1,14 +1,14 @@
-import OnboardingBg from '../../assets/OnboardingBg.png';
-import OnboardingLogo from '../../assets/OnboardingLogo.png';
-import Logo from '../../assets/logo.svg';
-import { StackNavigation } from '../../components/RootNavigator/RootNavigator';
-import { ComAnimatedAppearance } from '../../shared/ComAnimatedAppearance/ComAnimatedAppearance';
-import ComButton from '../../shared/ComButton/ComButton';
-import ComSafeAreaView from '../../shared/ComSafeAreaView/ComSafeAreaView';
-import { useNavigation } from '@react-navigation/native';
 import React, { Children } from 'react';
 import { Button, Image, ImageBackground, Pressable, StatusBar, Text } from 'react-native';
 import { View } from 'react-native';
+import ComSafeAreaView from '../../shared/ComSafeAreaView/ComSafeAreaView';
+import OnboardingLogo from '../../assets/OnboardingLogo.png';
+import Logo from '../../assets/logo.svg';
+import OnboardingBg from '../../assets/OnboardingBg.png';
+import ComButton from '../../shared/ComButton/ComButton';
+import { ComAnimatedAppearance } from '../../shared/ComAnimatedAppearance/ComAnimatedAppearance';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigation } from '../../components/RootNavigator/RootNavigator';
 
 const OnboardingScreen = () => {
     const { navigate } = useNavigation<StackNavigation>();

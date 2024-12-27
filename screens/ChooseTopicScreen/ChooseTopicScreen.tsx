@@ -1,21 +1,21 @@
+import React, { useEffect, useState } from 'react';
+import { Dimensions, Text, View } from 'react-native';
+import ComSafeAreaView from '../../shared/ComSafeAreaView/ComSafeAreaView';
+import ChooseCard from './Components/ChooseCard';
 import ChooseCard1 from '../../assets/ChooseCard1.png';
 import ChooseCard2 from '../../assets/ChooseCard2.png';
-import { StackNavigation } from '../../components/RootNavigator/RootNavigator';
-import ComButton from '../../shared/ComButton/ComButton';
-import ComSafeAreaView from '../../shared/ComSafeAreaView/ComSafeAreaView';
-import Skeleton from '../../shared/ComSkeleton/ComSkeleton';
 import {
     useAssignCategoriesMutation,
     useGetCategoriesQuery,
 } from '../../store/api/authorizeApiSlice';
-import { select } from '../../store/slices/CategoriesSlice';
-import ChooseCard from './Components/ChooseCard';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useNavigation } from '@react-navigation/native';
-import React, { useEffect, useState } from 'react';
-import { Dimensions, Text, View } from 'react-native';
+import ComButton from '../../shared/ComButton/ComButton';
 import { ScrollView } from 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import Skeleton from '../../shared/ComSkeleton/ComSkeleton';
 import { useDispatch } from 'react-redux';
+import { select } from '../../store/slices/CategoriesSlice';
+import { StackNavigation } from '../../components/RootNavigator/RootNavigator';
 
 const ChooseTopicScreen = () => {
     const { data, isLoading } = useGetCategoriesQuery({});

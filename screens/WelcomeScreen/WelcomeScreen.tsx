@@ -1,12 +1,11 @@
+import { ImageBackground, StatusBar, Text, View } from 'react-native';
+import ComSafeAreaView from '../../shared/ComSafeAreaView/ComSafeAreaView';
 import DarkLogo from '../../assets/DarkLogo.svg';
 import WelcomeBG from '../../assets/WelcomeBg.png';
-import { StackNavigation } from '../../components/RootNavigator/RootNavigator';
 import ComButton from '../../shared/ComButton/ComButton';
-import ComSafeAreaView from '../../shared/ComSafeAreaView/ComSafeAreaView';
-import { useNavigation } from '@react-navigation/native';
 import { useEffect } from 'react';
-import { ImageBackground, StatusBar, Text, View } from 'react-native';
-
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigation } from '../../components/RootNavigator/RootNavigator';
 const WelcomeScreen = () => {
     useEffect(() => {
         StatusBar.setBackgroundColor('#8E97FD', true);

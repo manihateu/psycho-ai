@@ -1,8 +1,8 @@
-import SpinerSVG from '../../assets/logo.svg';
 import React, { useEffect } from 'react';
+import SpinerSVG from '../../assets/logo.svg';
 import Animated, {
-    Easing,
     cancelAnimation,
+    Easing,
     useAnimatedStyle,
     useSharedValue,
     withRepeat,

@@ -1,11 +1,11 @@
-import { useQuit } from '../../shared/hooks/useQuit';
-import { loginAction, quit } from '../slices/userSlice';
-import { RootState } from '../store';
-import { toast } from '@backpackapp-io/react-native-toast';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { loginAction, quit } from '../slices/userSlice';
+import { RootState } from '../store';
+import { useQuit } from '../../shared/hooks/useQuit';
+import { toast } from '@backpackapp-io/react-native-toast';
 
 export type TRegisterBody = {
     name: string;

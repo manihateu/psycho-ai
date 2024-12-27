@@ -1,11 +1,3 @@
-import mockCardImg1 from '../../assets/mockCardImg1.png';
-import mockCardImg2 from '../../assets/mockCardImg2.png';
-import ComCourseModal from '../../shared/ComCourseModal/ComCourseModal';
-import Skeleton from '../../shared/ComSkeleton/ComSkeleton';
-import { useGetUserQuery } from '../../store/api/authorizeApiSlice';
-import FlatPlayCard from './FlatPlayCard/FlatPlayCard';
-import TopCard from './FlatPlayCard/TopCard';
-import React, { useState } from 'react';
 import {
     Dimensions,
     FlatList,
@@ -15,7 +7,15 @@ import {
     TouchableOpacity,
 } from 'react-native';
 import { View } from 'react-native';
+import FlatPlayCard from './FlatPlayCard/FlatPlayCard';
+import mockCardImg1 from '../../assets/mockCardImg1.png';
+import mockCardImg2 from '../../assets/mockCardImg2.png';
 import { Image } from 'react-native';
+import TopCard from './FlatPlayCard/TopCard';
+import { useGetUserQuery } from '../../store/api/authorizeApiSlice';
+import Skeleton from '../../shared/ComSkeleton/ComSkeleton';
+import React, { useState } from 'react';
+import ComCourseModal from '../../shared/ComCourseModal/ComCourseModal';
 
 const HomeScreen = () => {
     const { data, error, isLoading } = useGetUserQuery({});

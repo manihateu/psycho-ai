@@ -1,7 +1,7 @@
-import Play from '../../../assets/Play.svg';
-import FaltCardBG from '../../../assets/faltCardBg.png';
 import { Text, TouchableOpacity } from 'react-native';
 import { ImageBackground, View } from 'react-native';
+import FaltCardBG from '../../../assets/faltCardBg.png';
+import Play from '../../../assets/Play.svg';
 
 const FlatPlayCard = () => {
     return (

@@ -1,12 +1,12 @@
-import LayoutBg from '../../assets/LayoutBg.png';
-import LogoBtn from '../../assets/LogoBtn.svg';
-import Music from '../../assets/Music.svg';
-import Profile from '../../assets/Profile.svg';
-import Logo from '../../assets/logo.svg';
-import ComSafeAreaView from '../../shared/ComSafeAreaView/ComSafeAreaView';
 import React, { useEffect } from 'react';
+import ComSafeAreaView from '../../shared/ComSafeAreaView/ComSafeAreaView';
 import { Dimensions, ImageBackground, StatusBar, Text, TouchableOpacity, View } from 'react-native';
+import Logo from '../../assets/logo.svg';
+import LogoBtn from '../../assets/LogoBtn.svg';
+import Profile from '../../assets/Profile.svg';
+import Music from '../../assets/Music.svg';
 import Svg, { Path } from 'react-native-svg';
+import LayoutBg from '../../assets/LayoutBg.png';
 
 type TLayoutProps = {
     children: any;

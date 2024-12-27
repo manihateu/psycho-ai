@@ -1,16 +1,17 @@
 import { useEffect } from 'react';
 import { StyleProp, StyleSheet, ViewStyle } from 'react-native';
+
 import Animated, {
-    useAnimatedStyle,
-    useSharedValue,
+    withTiming,
     withRepeat,
     withSequence,
-    withTiming,
+    useSharedValue,
+    useAnimatedStyle,
 } from 'react-native-reanimated';
 
 type TSkeletomProps = {
-    style: StyleProp<ViewStyle>;
-};
+    style: StyleProp<ViewStyle>
+}
 
 const Skeleton = ({ style }: TSkeletomProps) => {
     const opacity = useSharedValue(1);
