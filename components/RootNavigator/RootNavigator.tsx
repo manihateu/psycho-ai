@@ -41,7 +41,7 @@ export const RootNavigator = () => {
                           (route.name == 'ChooseTopicScreen' || route.name == 'WelcomeScreen') &&
                           isSelectCategories
                       ) {
-                        //   console.log(isSelectCategories);
+                          //   console.log(isSelectCategories);
                           return null;
                       }
                       return (

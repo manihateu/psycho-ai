@@ -10,8 +10,8 @@ import Animated, {
 } from 'react-native-reanimated';
 
 type TSkeletomProps = {
-    style: StyleProp<ViewStyle>
-}
+    style: StyleProp<ViewStyle>;
+};
 
 const Skeleton = ({ style }: TSkeletomProps) => {
     const opacity = useSharedValue(1);

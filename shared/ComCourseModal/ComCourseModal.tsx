@@ -9,9 +9,9 @@ import Listening from '../../assets/listening.svg';
 import Play from '../../assets/Play.svg';
 
 type TComCourseModalProps = {
-    open: boolean,
-    setOpen: (arg: boolean) => void
-}
+    open: boolean;
+    setOpen: (arg: boolean) => void;
+};
 
 const ComCourseModal = ({ open, setOpen }: TComCourseModalProps) => {
     const bottomSheetModalRef = useRef<BottomSheetModal>(null);
@@ -33,7 +33,7 @@ const ComCourseModal = ({ open, setOpen }: TComCourseModalProps) => {
                 setOpen(false);
             }}
             style={{ borderRadius: 32 }}
-            snapPoints={Platform.OS == "android" ? ["50%","100%"] : ["50%","90%"]}
+            snapPoints={Platform.OS == 'android' ? ['50%', '100%'] : ['50%', '90%']}
         >
             <BottomSheetView style={{ flex: 1 }}>
                 <View className="absolute flex flex-row items-center top-[20px] right-[20px] z-[999] gap-x-2">

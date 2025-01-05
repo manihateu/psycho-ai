@@ -34,7 +34,7 @@ const ProfileScreen = () => {
             <View className="w-full flex flex-row justify-around">
                 <TouchableOpacity
                     className="rounded-3xl p-3 shandow bg-white"
-                    style={[{ minWidth: Dimensions.get('window').width / 2 - 16 }, mixins.shadow]}
+                    style={[{ width: Dimensions.get('window').width / 2 - 16 }, mixins.shadow]}
                 >
                     <View className="flex flex-row">
                         <Image
@@ -93,10 +93,13 @@ const ProfileScreen = () => {
                 <Categories width={20} height={20} style={{ marginLeft: 'auto' }} />
             </TouchableOpacity>
             <TouchableOpacity
+                onPress={() => {
+                    navigation.navigate('SettingsScreen');
+                }}
                 className="rounded-3xl p-5 flex flex-row items-center shandow bg-white mx-[8px] mt-3"
                 style={[{ minWidth: Dimensions.get('window').width / 2 - 32 }, mixins.shadow]}
             >
-                <Text className="font-Comfortaa">Настройки</Text>
+                <Text className="font-Comfortaa dark:text-blue-200">Настройки</Text>
                 <Options width={20} height={20} style={{ marginLeft: 'auto' }} />
             </TouchableOpacity>
             <TouchableOpacity
@@ -104,9 +107,7 @@ const ProfileScreen = () => {
                 className="rounded-3xl p-5 flex flex-row items-center shandow bg-white mx-[8px] mt-3 bg-red-400"
                 style={[{ minWidth: Dimensions.get('window').width / 2 - 32 }, mixins.shadow]}
             >
-                {loading ? <Loader/> :
-                    <Text className="font-Comfortaa text-white">Выйти</Text>
-                }
+                {loading ? <Loader /> : <Text className="font-Comfortaa text-white">Выйти</Text>}
                 <Quit width={20} height={20} style={{ marginLeft: 'auto' }} />
             </TouchableOpacity>
         </ScrollView>

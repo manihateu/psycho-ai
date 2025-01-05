@@ -1,37 +1,35 @@
 {
-  "expo": {
-    "name": "psycho-ai",
-    "slug": "psycho-ai",
-    "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./assets/logo.png",
-    "userInterfaceStyle": "light",
-    "newArchEnabled": true,
-    "splash": {
-      "image": "./assets/logo.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
-    "ios": {
-      "supportsTablet": true
-    },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/logo.png",
-        "backgroundColor": "#ffffff"
-      },
-      "package": "com.manihateu.psychoai"
-    },
-    "web": {
-      "favicon": "./assets/logo.png"
-    },
-    "plugins": [
-      "expo-font"
-    ],
-    "extra": {
-      "eas": {
-        "projectId": "dcebdadc-9a46-414b-bf39-a5b68b39286c"
-      }
+    "expo": {
+        "name": "psycho-ai",
+        "slug": "psycho-ai",
+        "version": "1.0.0",
+        "orientation": "portrait",
+        "icon": "./assets/logo.png",
+        "userInterfaceStyle": "light",
+        "newArchEnabled": true,
+        "splash": {
+            "image": "./assets/logo.png",
+            "resizeMode": "contain",
+            "backgroundColor": "#ffffff"
+        },
+        "ios": {
+            "supportsTablet": true
+        },
+        "android": {
+            "adaptiveIcon": {
+                "foregroundImage": "./assets/logo.png",
+                "backgroundColor": "#ffffff"
+            },
+            "package": "com.manihateu.psychoai"
+        },
+        "web": {
+            "favicon": "./assets/logo.png"
+        },
+        "plugins": ["expo-font"],
+        "extra": {
+            "eas": {
+                "projectId": "dcebdadc-9a46-414b-bf39-a5b68b39286c"
+            }
+        }
     }
-  }
 }

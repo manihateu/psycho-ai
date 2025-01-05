@@ -10,7 +10,6 @@ import { useEffect } from 'react';
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Toasts } from '@backpackapp-io/react-native-toast';
-import { Dimensions, StatusBar, View } from 'react-native';
 
 SplashScreen.preventAutoHideAsync();
 

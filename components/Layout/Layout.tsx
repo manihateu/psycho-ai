@@ -1,6 +1,14 @@
 import React, { useEffect } from 'react';
 import ComSafeAreaView from '../../shared/ComSafeAreaView/ComSafeAreaView';
-import { Dimensions, ImageBackground, Platform, StatusBar, Text, TouchableOpacity, View } from 'react-native';
+import {
+    Dimensions,
+    ImageBackground,
+    Platform,
+    StatusBar,
+    Text,
+    TouchableOpacity,
+    View,
+} from 'react-native';
 import Logo from '../../assets/logo.svg';
 import LogoBtn from '../../assets/LogoBtn.svg';
 import Profile from '../../assets/Profile.svg';
@@ -10,6 +18,7 @@ import LayoutBg from '../../assets/LayoutBg.png';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigation } from '../RootNavigator/RootNavigator';
 import { mixins } from '../../constans';
+import Back from '../../assets/arrow-left.svg';
 
 type TLayoutProps = {
     children?: any;
@@ -36,7 +45,7 @@ const Layout = ({ children, canBack, noBottom, selected, setSelectedPage }: TLay
                         }}
                         style={{ position: 'absolute', top: 12, left: 12 }}
                     >
-                        {/* <Back width={30} height={30} /> */}
+                        <Back width={30} height={30} />
                     </TouchableOpacity>
                 )}
                 <Text className="font-Comfortaa min-w-[102px] mr-[8px]">Ментальный</Text>
@@ -47,7 +56,10 @@ const Layout = ({ children, canBack, noBottom, selected, setSelectedPage }: TLay
                 {children}
             </ImageBackground>
             {!noBottom && setSelectedPage && (
-                <View className="bg-white flex flex-row py-3 justify-around" style={Platform.OS == "android" && mixins.shadow}>
+                <View
+                    className="bg-white flex flex-row py-3 justify-around"
+                    style={Platform.OS == 'android' && mixins.shadow}
+                >
                     <TouchableOpacity
                         onPress={() => setSelectedPage(0)}
                         disabled={selected == 0}

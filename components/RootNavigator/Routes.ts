@@ -2,6 +2,7 @@ import ChooseTopicScreen from '../../screens/ChooseTopicScreen/ChooseTopicScreen
 import HomeLayout from '../../screens/HomeLayout/HomeLayout';
 import LoginScreen from '../../screens/LoginScreen/LoginScreen';
 import OnboardingScreen from '../../screens/OnboardingScreen/OnboardingScreen';
+import SettingScreen from '../../screens/SettingsScreen/SettingScreen';
 import SignUpScreen from '../../screens/SignUpScreen/SignUpScreen';
 import WelcomeScreen from '../../screens/WelcomeScreen/WelcomeScreen';
 
@@ -37,5 +38,9 @@ export const private_routes: TRoute[] = [
     {
         name: 'HomeLayout',
         component: HomeLayout,
+    },
+    {
+        name: 'SettingsScreen',
+        component: SettingScreen,
     },
 ];

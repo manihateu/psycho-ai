@@ -10,8 +10,9 @@ module.exports = {
         extend: {},
         fontFamily: {
             Comfortaa: ['Comfortaa'],
-            ComfortaaBold: ["ComfortaaBold"]
+            ComfortaaBold: ['ComfortaaBold'],
         },
     },
     plugins: [],
+    darkMode: 'class'
 };

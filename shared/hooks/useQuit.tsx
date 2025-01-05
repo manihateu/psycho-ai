@@ -5,20 +5,20 @@ import { useState } from 'react';
 import { toast } from '@backpackapp-io/react-native-toast';
 
 export const useQuit = () => {
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(false);
     const dispatch = useDispatch();
     const quitHandler = async () => {
         try {
-            setLoading(true)
-            await AsyncStorage.removeItem("x-token-access");
-            await AsyncStorage.removeItem("x-token-refresh");
-            await AsyncStorage.removeItem("x-select-categories");
+            setLoading(true);
+            await AsyncStorage.removeItem('x-token-access');
+            await AsyncStorage.removeItem('x-token-refresh');
+            await AsyncStorage.removeItem('x-select-categories');
             dispatch(quit());
         } catch (e) {
-            toast.error("Не удалось выйти")
-            setLoading(false)
+            toast.error('Не удалось выйти');
+            setLoading(false);
         } finally {
-            setLoading(false)
+            setLoading(false);
         }
     };
     return { quitHandler, loading };

@@ -10,7 +10,7 @@ import { View } from 'react-native';
 import FlatPlayCard from './FlatPlayCard/FlatPlayCard';
 import mockCardImg1 from '../../assets/mockCardImg1.png';
 import mockCardImg2 from '../../assets/mockCardImg2.png';
-import mockCardBottom from '../../assets/mainCardBgMock.png'
+import mockCardBottom from '../../assets/mainCardBgMock.png';
 import { Image } from 'react-native';
 import TopCard from './FlatPlayCard/TopCard';
 import { useGetUserQuery } from '../../store/api/authorizeApiSlice';
@@ -20,7 +20,7 @@ import ComCourseModal from '../../shared/ComCourseModal/ComCourseModal';
 
 const HomeScreen = () => {
     const { data, error, isLoading } = useGetUserQuery({});
-    console.log(data)
+    console.log(data);
     const [openModal, setOpenModal] = useState(false);
     return (
         <>
@@ -65,18 +65,12 @@ const HomeScreen = () => {
 
                 <ScrollView horizontal className="mt-[20px]">
                     <TouchableOpacity className="mx-[8px]">
-                        <Image
-                            source={mockCardBottom}
-                            className="w-[162px] h-[115px] rounded-xl"
-                        />
+                        <Image source={mockCardBottom} className="w-[162px] h-[115px] rounded-xl" />
                         <Text className="mt-[11px] font-Comfortaa">Фокус</Text>
                         <Text className=" font-Comfortaa text-[#A1A4B2]">Медитация 3-10 МИН</Text>
                     </TouchableOpacity>
                     <TouchableOpacity className="mx-[8px]">
-                        <Image
-                            source={mockCardBottom}
-                            className="w-[162px] h-[115px] rounded-xl"
-                        />
+                        <Image source={mockCardBottom} className="w-[162px] h-[115px] rounded-xl" />
                         <Text className="mt-[11px] font-Comfortaa">Фокус</Text>
                         <Text className=" font-Comfortaa text-[#A1A4B2]">Медитация 3-10 МИН</Text>
                     </TouchableOpacity>
