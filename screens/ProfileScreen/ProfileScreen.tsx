@@ -20,13 +20,14 @@ import { useQuit } from '../../shared/hooks/useQuit';
 import { toast } from '@backpackapp-io/react-native-toast';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigation } from '../../components/RootNavigator/RootNavigator';
+import Loader from '../../shared/Loader/Loader';
 
 const ProfileScreen = () => {
     const { data, error, isLoading } = useGetUserQuery({});
     if (error) {
         toast.error('Произошла ошибка');
     }
-    const { quitHandler } = useQuit();
+    const { quitHandler, loading } = useQuit();
     const navigation = useNavigation<StackNavigation>();
     return (
         <ScrollView className="py-3">
@@ -103,7 +104,9 @@ const ProfileScreen = () => {
                 className="rounded-3xl p-5 flex flex-row items-center shandow bg-white mx-[8px] mt-3 bg-red-400"
                 style={[{ minWidth: Dimensions.get('window').width / 2 - 32 }, mixins.shadow]}
             >
-                <Text className="font-Comfortaa text-white">Выйти</Text>
+                {loading ? <Loader/> :
+                    <Text className="font-Comfortaa text-white">Выйти</Text>
+                }
                 <Quit width={20} height={20} style={{ marginLeft: 'auto' }} />
             </TouchableOpacity>
         </ScrollView>

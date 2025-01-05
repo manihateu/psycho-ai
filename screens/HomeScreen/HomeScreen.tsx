@@ -20,6 +20,7 @@ import ComCourseModal from '../../shared/ComCourseModal/ComCourseModal';
 
 const HomeScreen = () => {
     const { data, error, isLoading } = useGetUserQuery({});
+    console.log(data)
     const [openModal, setOpenModal] = useState(false);
     return (
         <>

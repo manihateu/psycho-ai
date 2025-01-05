@@ -65,9 +65,11 @@ export const { useLoginMutation, useRegisterMutation, useRefreshTokenMutation } 
 export const useTokenPolling = () => {
     const { quitHandler } = useQuit();
     const [refreshTokenMutation] = useRefreshTokenMutation();
+    const isAuth = useSelector((state: RootState) => state.userAuth.isAuth);
     const dispath = useDispatch();
     const [isLoading, setIsLoading] = useState(false);
     useEffect(() => {
+        if (!isAuth) return;
         const refresh = async () => {
             const refreshToken = await AsyncStorage.getItem('x-token-refresh');
             if (!refreshToken) {
@@ -95,6 +97,7 @@ export const useTokenPolling = () => {
     }, []);
 
     useEffect(() => {
+        if (!isAuth) return;
         const startPolling = async () => {
             const refreshToken = await AsyncStorage.getItem('x-token-refresh');
             if (!refreshToken) {

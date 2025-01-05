@@ -41,7 +41,6 @@ export const authorizeApiSlice = createApi({
         }),
         sendBotMessage: builder.mutation<TSendbotResponse, TSendBotRequest>({
             query: (data) => {
-                console.log(data);
                 return {
                     url: '/bot/send',
                     method: 'POST',
