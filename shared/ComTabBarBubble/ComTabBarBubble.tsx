@@ -25,7 +25,7 @@ const BubbleTabBar = ({ title, iconJSX, onPress, selected, maxWidth }) => {
     }, [selected]);
   return (
     <TouchableOpacity onPress={onPress}>
-        <Animated.View className="bg-[#8E97FD] rounded-full h-[50px] overflow-hidden px-[10px] flex flex-row items-center" style={animatedStyle}>
+        <Animated.View className={`bg-[${selected ? "#8E97FD" : ""}] rounded-full h-[50px] overflow-hidden px-[10px] flex flex-row items-center`} style={animatedStyle}>
             {iconJSX}
             <Animated.Text style={textAnimatedStyle} className="text-white ml-[10px] text-nowrap font-ComfortaaBold">
                 {title}
