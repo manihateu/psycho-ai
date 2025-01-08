@@ -8,12 +8,13 @@ import { ScrollView } from 'react-native-gesture-handler';
 import Skeleton from '../../shared/ComSkeleton/ComSkeleton';
 import ComAnimatedKeyboardAvoiding from '../../shared/ComAnimatedKeyboardAvoiding/ComAnimatedKeyboardAvoiding';
 import React from 'react';
+import { toast } from '@backpackapp-io/react-native-toast';
 
 export const ChatScreen = () => {
     const [sendBotMessage, { isLoading: sendLoading }] = useSendBotMessageMutation();
     const [value, setValue] = useState<string>('');
     const { data, error, isLoading } = useGetUserQuery({});
-    const [messages, setMessages] = useState<{ message: string; owner: boolean }[]>([]);
+    const [messages, setMessages] = useState<{ message: string; owner: boolean; date: string }[]>([]);
     const scrollViewRef = useRef(null);
 
     const scrollToEnd = () => {
@@ -25,7 +26,7 @@ export const ChatScreen = () => {
     // console.log(value)
     const handleSendMessage = async () => {
         try {
-            setMessages((message) => [...message, { owner: true, message: value }]);
+            setMessages((message) => [...message, { owner: true, message: value, date: new Date().toString()}]);
             const mes = value;
             scrollToEnd();
             setValue('');
@@ -34,13 +35,14 @@ export const ChatScreen = () => {
                 .then((data) => {
                     setMessages((message) => [
                         ...message,
-                        { owner: false, message: data.response },
+                        { owner: false, message: data.response, date: new Date().toString() },
                     ]);
                     // console.log(data)
                     scrollToEnd();
                 });
         } catch (e) {
             console.log(e);
+            toast.error("Не удалось отправить сообщение:(")
         }
     };
     return (
@@ -53,6 +55,7 @@ export const ChatScreen = () => {
                             key={index}
                             owner_name={!isLoading && data.name}
                             message={message.message}
+                            date={message.date}
                         />
                     ))}
                 {sendLoading && (

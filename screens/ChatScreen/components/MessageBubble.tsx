@@ -5,9 +5,10 @@ type TMessageBubbleProps = {
     message: string;
     owner: boolean;
     owner_name?: string;
+    date: string;
 };
 
-function MessageBubble({ message, owner, owner_name }: TMessageBubbleProps) {
+function MessageBubble({ message, owner, owner_name, date }: TMessageBubbleProps) {
     return (
         <View
             className={`flex pb-6 flex-row gap-x-3 items-end ${owner && 'ml-auto flex-row-reverse'}`}
@@ -29,6 +30,7 @@ function MessageBubble({ message, owner, owner_name }: TMessageBubbleProps) {
                 className={`p-3 bg-blue-200 max-w-[250px] ${owner ? 'rounded-l-[18px] rounded-tr-[18px]' : 'rounded-r-[18px] rounded-tl-[18px]'}`}
             >
                 <Text className="font-Comfortaa leading-5">{message}</Text>
+                <Text className='font-ComfortaaBold text-xs text-[#A0A3B1] mr-auto'>{date.split(" ")[4].split(":")[0]}:{date.split(" ")[4].split(":")[1]}</Text>
             </View>
         </View>
     );
