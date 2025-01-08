@@ -69,7 +69,7 @@ export const useTokenPolling = () => {
     const dispath = useDispatch();
     const [isLoading, setIsLoading] = useState(false);
     useEffect(() => {
-        if (!isAuth) return;
+        // if (!isAuth) return;
         const refresh = async () => {
             const refreshToken = await AsyncStorage.getItem('x-token-refresh');
             if (!refreshToken) {
