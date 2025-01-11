@@ -9,8 +9,11 @@ const categoriesSlice = createSlice({
         select(state) {
             state.selectCategories = true;
         },
+        deselect(state) {
+            state.selectCategories = false;
+        }
     },
 });
 
-export const { select } = categoriesSlice.actions;
+export const { select, deselect } = categoriesSlice.actions;
 export default categoriesSlice.reducer;

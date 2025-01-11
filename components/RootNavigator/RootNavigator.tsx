@@ -7,7 +7,7 @@ import { useTokenPolling } from '../../store/api/mainApiSlice';
 import SplashScreen from '../../screens/SplashScreen/SplashScreen';
 import { useEffect, useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { select } from '../../store/slices/CategoriesSlice';
+import { deselect, select } from '../../store/slices/CategoriesSlice';
 
 export type ScreenNames = (typeof private_routes)[number]['name'];
 
@@ -28,6 +28,8 @@ export const RootNavigator = () => {
             const selectSt = await AsyncStorage.getItem('x-select-categories');
             if (selectSt) {
                 dispatch(select());
+            } else {
+                dispatch(deselect())
             }
         };
         selectCategories();

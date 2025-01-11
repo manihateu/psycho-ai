@@ -3,6 +3,7 @@ import { quit } from '../../store/slices/userSlice';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useState } from 'react';
 import { toast } from '@backpackapp-io/react-native-toast';
+import { deselect } from '../../store/slices/CategoriesSlice';
 
 export const useQuit = () => {
     const [loading, setLoading] = useState(false);
@@ -13,6 +14,7 @@ export const useQuit = () => {
             await AsyncStorage.removeItem('x-token-access');
             await AsyncStorage.removeItem('x-token-refresh');
             await AsyncStorage.removeItem('x-select-categories');
+            dispatch(deselect())
             dispatch(quit());
         } catch (e) {
             toast.error('Не удалось выйти');
