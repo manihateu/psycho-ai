@@ -25,6 +25,7 @@ const ComSafeAreaView = ({ children, style, className }: TComSafeAreaViewProps) 
                     flex: 1,
                     position: 'relative',
                     minHeight: Dimensions.get('screen').height - StatusBar.currentHeight * 2,
+                    marginTop: StatusBar.currentHeight
                 },
                 style,
             ]}

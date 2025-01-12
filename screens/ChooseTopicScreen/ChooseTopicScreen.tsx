@@ -24,6 +24,7 @@ const ChooseTopicScreen = () => {
     const [selected, setSelected] = useState<number[]>([]);
     const navigation = useNavigation<StackNavigation>();
     const dispatch = useDispatch();
+    console.log(data)
     const assignToUser = async () => {
         try {
             if (selected.length !== 0) {

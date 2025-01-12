@@ -13,6 +13,7 @@ import {
 type TChooseCardProp = {
     title: string;
     background: string;
+    bgcolor?: string;
     textClassName: string;
     classNameS: string;
     onPress?: () => void;
@@ -26,18 +27,19 @@ const ChooseCard = ({
     classNameS,
     onPress,
     isSelected,
+    bgcolor
 }: TChooseCardProp) => {
     return (
         <TouchableOpacity onPress={onPress} className="relative">
             {
                 <ImageBackground
                     style={{ overflow: 'hidden' }}
-                    className={`flex rounded-xl ${classNameS}`}
+                    className={`flex rounded-xl ${classNameS} ${bgcolor ? `bg-[${bgcolor}]` : "bg-[#8E97FD]"}`}
                     source={{ uri: background }}
                 >
                     <View className="h-full flex justify-end">
                         <Text
-                            className={`font-Comfortaa mb-3 text-center text-base ${textClassName}`}
+                            className={`font-ComfortaaBold mb-3 text-center text-base ${textClassName}`}
                         >
                             {title}
                         </Text>

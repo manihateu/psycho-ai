@@ -6,12 +6,10 @@ import Animated, {
     withSpring,
 } from 'react-native-reanimated';
 
-const ComAnimatedKeyboardAvoiding = ({ children }: { children: ReactNode }) => {
+const ComAnimatedKeyboardAvoiding = ({ children }: { children?: ReactNode }) => {
     const keyboard = useAnimatedKeyboard();
     const translateY = useSharedValue(0)
-    
-    translateY.value = withSpring(keyboard.height.value !== 0 ? -keyboard.height.value + 100 : 0)
-    
+        
     const translateStyle = useAnimatedStyle(() => {
         return {
             transform: [{ translateY: withSpring(keyboard.height.value > 100 ? -keyboard.height.value + 100 : 0) }],

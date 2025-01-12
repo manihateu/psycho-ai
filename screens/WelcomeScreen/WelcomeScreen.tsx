@@ -1,11 +1,12 @@
 import { ImageBackground, StatusBar, Text, View } from 'react-native';
 import ComSafeAreaView from '../../shared/ComSafeAreaView/ComSafeAreaView';
 import DarkLogo from '../../assets/DarkLogo.svg';
-import WelcomeBG from '../../assets/WelcomeBg.png';
+import WelcomeBG from '../../assets/testBgWelcome.png';
 import ComButton from '../../shared/ComButton/ComButton';
 import { useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigation } from '../../components/RootNavigator/RootNavigator';
+import { Image } from 'react-native';
 const WelcomeScreen = () => {
     useEffect(() => {
         StatusBar.setBackgroundColor('#8E97FD', true);
@@ -16,7 +17,7 @@ const WelcomeScreen = () => {
     });
     return (
         <ComSafeAreaView className="bg-[#8E97FD]">
-            <ImageBackground source={WelcomeBG} className="h-full">
+            <View className="h-full">
                 <View
                     className={`w-full flex p-3 flex-row items-center mt-[${StatusBar.currentHeight ? 50 - StatusBar.currentHeight : 30}px] justify-center`}
                 >
@@ -36,7 +37,8 @@ const WelcomeScreen = () => {
                         Пользуйтесь нашим приложением и получайте ментальную помощь и разгрузку
                     </Text>
                 </View>
-                <View className="absolute bottom-[95px] left-0 right-0 w-full px-[22px]">
+                <Image source={WelcomeBG} className='w-full h-1/2 my-auto'/>
+                <View className="mt-auto mb-5 w-full px-[22px]">
                     <ComButton
                         onPress={() => {
                             navigation.navigate('ChooseTopicScreen');
@@ -46,7 +48,7 @@ const WelcomeScreen = () => {
                         size="medium"
                     />
                 </View>
-            </ImageBackground>
+            </View>
         </ComSafeAreaView>
     );
 };
