@@ -7,6 +7,7 @@ import ChooseCard2 from '../../assets/ChooseCard2.png';
 import {
     useAssignCategoriesMutation,
     useGetCategoriesQuery,
+    useGetUserQuery,
 } from '../../store/api/authorizeApiSlice';
 import ComButton from '../../shared/ComButton/ComButton';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -16,15 +17,28 @@ import Skeleton from '../../shared/ComSkeleton/ComSkeleton';
 import { useDispatch } from 'react-redux';
 import { select } from '../../store/slices/CategoriesSlice';
 import { StackNavigation } from '../../components/RootNavigator/RootNavigator';
+import SplashScreen from '../SplashScreen/SplashScreen';
 
 const ChooseTopicScreen = () => {
     const { data, isLoading } = useGetCategoriesQuery({});
     const [assignCategories, { isLoading: isLoadingAssign }] = useAssignCategoriesMutation();
+    const {data: user, isLoading: userLoading} = useGetUserQuery({})
+    const [loading, setLoading] = useState(true)
     const url = 'http://92.252.240.206:3000';
     const [selected, setSelected] = useState<number[]>([]);
     const navigation = useNavigation<StackNavigation>();
     const dispatch = useDispatch();
-    console.log(data)
+    useEffect(() => {
+        if (!userLoading) setLoading(false)
+        const checkCategories = async () => {
+            if (userLoading) return
+            await AsyncStorage.setItem('x-select-categories', '1');
+            navigation.navigate('HomeLayout');
+            dispatch(select());
+        }
+        checkCategories()
+    }, [userLoading])
+
     const assignToUser = async () => {
         try {
             if (data.length == 0) {
@@ -44,7 +58,7 @@ const ChooseTopicScreen = () => {
     };
 
     console.log(selected);
-    return (
+    return loading ? <SplashScreen/> : (
         <ComSafeAreaView style={{ backgroundColor: '#fff' } as any}>
             <View className="mt-2 p-4 w-full ">
                 <Text className="w-full text-center py-1 font-Comfortaa text-2xl">

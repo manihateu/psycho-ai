@@ -51,7 +51,6 @@ const HomeScreen = () => {
     const { data, error, isLoading, refetch, isFetching } = useGetUserQuery({});
     const {data: recomendations, error: recError, isLoading: recIsLoading, refetch: refetchrec, isFetching: recIsFetching} = useGetRecomendationsQuery(5)
     const [refreshing, setRefreshing] = React.useState(false);
-
     const onRefresh = React.useCallback(() => {
         setRefreshing(true);
         refetch()
