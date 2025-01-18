@@ -52,8 +52,8 @@ const LoginScreen = () => {
             dispath(loginAction(data.accessToken));
             toast('Добро пожаловать!');
         } catch (e: any) {
-            if (e.error) {
-                toast.error(`Произошла ошибка! \n${e.error}`);
+            if (e.data.message) {
+                toast.error(`Произошла ошибка! \n${e.data.message}`);
             } else {
                 toast.error(`Произошла ошибка! \n${e}`);
             }

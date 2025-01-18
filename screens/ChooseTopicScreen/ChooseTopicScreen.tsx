@@ -20,10 +20,10 @@ import { StackNavigation } from '../../components/RootNavigator/RootNavigator';
 import SplashScreen from '../SplashScreen/SplashScreen';
 
 const ChooseTopicScreen = () => {
+    const [loading, setLoading] = useState(true)
     const { data, isLoading } = useGetCategoriesQuery({});
     const [assignCategories, { isLoading: isLoadingAssign }] = useAssignCategoriesMutation();
     const {data: user, isLoading: userLoading} = useGetUserQuery({})
-    const [loading, setLoading] = useState(true)
     const url = 'http://92.252.240.206:3000';
     const [selected, setSelected] = useState<number[]>([]);
     const navigation = useNavigation<StackNavigation>();

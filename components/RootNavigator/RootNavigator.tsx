@@ -8,6 +8,8 @@ import SplashScreen from '../../screens/SplashScreen/SplashScreen';
 import { useEffect, useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { deselect, select } from '../../store/slices/CategoriesSlice';
+import { Socket } from 'socket.io';
+import { io } from 'socket.io-client';
 
 export type ScreenNames = (typeof private_routes)[number]['name'];
 
@@ -34,6 +36,12 @@ export const RootNavigator = () => {
         };
         selectCategories();
     }, []);
+    if (isAuth) {
+        const socket = io(process.env.API_URL ?? "")
+        socket.on(`notifications:${1}`, (notification) => {
+            console.log('Получено уведомление:', notification.message);
+        });
+    }
     if (isLoading) return <SplashScreen />;
     return (
         <Stack.Navigator>
