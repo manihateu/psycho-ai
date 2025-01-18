@@ -8,7 +8,6 @@ import Animated, {
 
 const ComAnimatedKeyboardAvoiding = ({ children }: { children?: ReactNode }) => {
     const keyboard = useAnimatedKeyboard();
-    const translateY = useSharedValue(0)
         
     const translateStyle = useAnimatedStyle(() => {
         return {

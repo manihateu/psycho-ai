@@ -27,6 +27,11 @@ const ChooseTopicScreen = () => {
     console.log(data)
     const assignToUser = async () => {
         try {
+            if (data.length == 0) {
+                await AsyncStorage.setItem('x-select-categories', '1');
+                navigation.navigate('HomeLayout');
+                dispatch(select()); //TO DO: доделать страницу когда нет категорий
+            }
             if (selected.length !== 0) {
                 await assignCategories({ categoryIds: selected });
                 await AsyncStorage.setItem('x-select-categories', '1');
@@ -112,6 +117,7 @@ const ChooseTopicScreen = () => {
                                         : `${url}${category.imageurl}`
                                 }
                                 classNameS="m-2.5 shadow bg-gray-200 w-44 h-44"
+                                bgcolor={category.bgcolor}
                             />
                         ))
                     )}

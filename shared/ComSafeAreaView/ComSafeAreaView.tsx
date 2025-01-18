@@ -17,22 +17,7 @@ type TComSafeAreaViewProps = {
 };
 
 const ComSafeAreaView = ({ children, style, className }: TComSafeAreaViewProps) => {
-    return Platform.OS == 'android' && StatusBar.currentHeight ? (
-        <View
-            className={className}
-            style={[
-                {
-                    flex: 1,
-                    position: 'relative',
-                    minHeight: Dimensions.get('screen').height - StatusBar.currentHeight * 2,
-                    marginTop: StatusBar.currentHeight
-                },
-                style,
-            ]}
-        >
-            {children}
-        </View>
-    ) : (
+    return (
         <SafeAreaView className={className} style={[{ flex: 1, position: 'relative' }, style]}>
             {children}
         </SafeAreaView>

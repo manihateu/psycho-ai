@@ -1,4 +1,5 @@
 import ChooseTopicScreen from '../../screens/ChooseTopicScreen/ChooseTopicScreen';
+import CourseScreen from '../../screens/CourseScreen/CourseScreen';
 import HomeLayout from '../../screens/HomeLayout/HomeLayout';
 import LoginScreen from '../../screens/LoginScreen/LoginScreen';
 import OnboardingScreen from '../../screens/OnboardingScreen/OnboardingScreen';
@@ -43,4 +44,8 @@ export const private_routes: TRoute[] = [
         name: 'SettingsScreen',
         component: SettingScreen,
     },
+    {
+        name: "CourseScreen",
+        component: CourseScreen
+    }
 ];

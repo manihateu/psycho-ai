@@ -1,7 +1,5 @@
 import {
-    Dimensions,
-    FlatList,
-    ImageBackground,
+    RefreshControl,
     ScrollView,
     Text,
     TouchableOpacity,
@@ -11,12 +9,16 @@ import FlatPlayCard from './FlatPlayCard/FlatPlayCard';
 import mockCardImg1 from '../../assets/mockCardImg1.png';
 import mockCardImg2 from '../../assets/mockCardImg2.png';
 import mockCardBottom from '../../assets/mainCardBgMock.png';
+import ErrorIcon from '../../assets/error.svg'
 import { Image } from 'react-native';
 import TopCard from './FlatPlayCard/TopCard';
 import { useGetUserQuery } from '../../store/api/authorizeApiSlice';
 import Skeleton from '../../shared/ComSkeleton/ComSkeleton';
 import React, { useState } from 'react';
 import ComCourseModal from '../../shared/ComCourseModal/ComCourseModal';
+import { useGetRecomendationsQuery } from '../../store/api/courses.api';
+import { TCourse } from './model/course.model';
+import { useNavigation } from '@react-navigation/native';
 
 const Phrases = {
     "21": "Доброй ночи",
@@ -46,15 +48,28 @@ const Phrases = {
 }
 
 const HomeScreen = () => {
-    const { data, error, isLoading } = useGetUserQuery({});
+    const { data, error, isLoading, refetch, isFetching } = useGetUserQuery({});
+    const {data: recomendations, error: recError, isLoading: recIsLoading, refetch: refetchrec, isFetching: recIsFetching} = useGetRecomendationsQuery(5)
+    const [refreshing, setRefreshing] = React.useState(false);
+
+    const onRefresh = React.useCallback(() => {
+        setRefreshing(true);
+        refetch()
+        refetchrec()
+        setTimeout(() => {
+            setRefreshing(false);
+        }, 2000);
+    }, []);
+    const navigation = useNavigation()
+    console.log("rec", recomendations)
     const thisDate = new Date().toString()
     const [openModal, setOpenModal] = useState(false);
     return (
         <>
-            <ScrollView className="w-full">
+            <ScrollView className="w-full" refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh}/>}>
                 <View className="">
                     <Text className="font-Comfortaa text-xl px-[8px]">
-                        {Phrases[thisDate.split(" ")[4].split(":")[0]]}, {isLoading ? <Skeleton style={{}} /> : data.name}!
+                        {Phrases[thisDate.split(" ")[4].split(":")[0]]}, {isLoading || isFetching ? <Skeleton style={{}} /> : data.name}!
                     </Text>
                     <Text className="font-Comfortaa text-lg text-[#A1A4B2] px-[8px]">
                         Мы желаем вам хорошего дня
@@ -91,16 +106,28 @@ const HomeScreen = () => {
                 </View>
 
                 <ScrollView horizontal className="mt-[20px]">
-                    <TouchableOpacity className="mx-[8px]">
-                        <Image source={mockCardBottom} className="w-[162px] h-[115px] rounded-xl" />
-                        <Text className="mt-[11px] font-Comfortaa">Фокус</Text>
-                        <Text className=" font-Comfortaa text-[#A1A4B2]">Медитация 3-10 МИН</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity className="mx-[8px]">
-                        <Image source={mockCardBottom} className="w-[162px] h-[115px] rounded-xl" />
-                        <Text className="mt-[11px] font-Comfortaa">Фокус</Text>
-                        <Text className=" font-Comfortaa text-[#A1A4B2]">Медитация 3-10 МИН</Text>
-                    </TouchableOpacity>
+                    {recIsLoading || recIsFetching ? new Array(5).fill(0).map((val, idx)=> (
+                        <View key={idx} className="mx-[8px]">
+                            <Skeleton style={{width: 164, height: 115}}/>
+                            <Skeleton style={{width: 100, height: 11, marginTop: 11}}/>
+                            <Skeleton style={{width: 100, height: 11, marginTop: 11}}/>
+                        </View>
+                    )) : 
+                        recomendations.length == 0 || recError ?
+                            <View className='flex flex-col w-screen my-[16px] items-center justify-center'>
+                                <ErrorIcon width={24} height={24}/>
+                                <Text className='font-ComfortaaBold text-lg'>Ошибка</Text>
+                            </View>
+                            :
+                            recomendations.map((recomendation: TCourse) => (
+                                <TouchableOpacity className="mx-[8px]" onPress={() => {navigation.navigate("CourseScreen", {id: recomendation.id})}}>
+                                    <Image source={{uri: recomendation.cardLogoUrl}} className={`w-[162px] h-[115px] rounded-xl bg-[${recomendation.cardLogoBgColor}]`} />
+                                    <Text className="mt-[11px] font-Comfortaa">{recomendation.name}</Text>
+                                    <Text className=" font-Comfortaa text-[#A1A4B2]">{recomendation.type} {recomendation.timeFrom}-{recomendation.timeTo} МИН</Text>
+                                </TouchableOpacity>
+                            ))
+                            
+                    }
                 </ScrollView>
             </ScrollView>
             <ComCourseModal open={openModal} setOpen={setOpenModal} />
