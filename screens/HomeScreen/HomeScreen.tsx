@@ -63,6 +63,7 @@ const HomeScreen = () => {
     console.log("rec", recomendations)
     const thisDate = new Date().toString()
     const [openModal, setOpenModal] = useState(false);
+    console.log(data)
     return (
         <>
             <ScrollView className="w-full" refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh}/>}>

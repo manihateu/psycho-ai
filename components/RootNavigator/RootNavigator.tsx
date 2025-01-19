@@ -38,7 +38,7 @@ export const RootNavigator = () => {
     }, []);
     if (isAuth) {
         const socket = io(process.env.API_URL ?? "")
-        socket.on(`notifications:${1}`, (notification) => {
+        socket.on(`notifications:${2}`, (notification) => {
             console.log('Получено уведомление:', notification.message);
         });
     }
@@ -51,7 +51,6 @@ export const RootNavigator = () => {
                           (route.name == 'ChooseTopicScreen' || route.name == 'WelcomeScreen') &&
                           isSelectCategories
                       ) {
-                          //   console.log(isSelectCategories);
                           return null;
                       }
                       return (

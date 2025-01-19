@@ -5,6 +5,7 @@ import LoginScreen from '../../screens/LoginScreen/LoginScreen';
 import OnboardingScreen from '../../screens/OnboardingScreen/OnboardingScreen';
 import SettingScreen from '../../screens/SettingsScreen/SettingScreen';
 import SignUpScreen from '../../screens/SignUpScreen/SignUpScreen';
+import UpdateTopicScreen from '../../screens/UpdateTopicScreen/UpdateTopicScreen';
 import WelcomeScreen from '../../screens/WelcomeScreen/WelcomeScreen';
 
 type TRoute = {
@@ -47,5 +48,10 @@ export const private_routes: TRoute[] = [
     {
         name: "CourseScreen",
         component: CourseScreen
-    }
+    },
+    {
+        name: "UpdateTopicScreen",
+        component: UpdateTopicScreen
+    },
+        
 ];
