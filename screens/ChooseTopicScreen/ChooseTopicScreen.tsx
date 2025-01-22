@@ -31,7 +31,9 @@ const ChooseTopicScreen = () => {
     useEffect(() => {
         if (!userLoading) setLoading(false)
         const checkCategories = async () => {
+            const {data: user, isLoading: userLoading} = useGetUserQuery({})
             if (userLoading) return
+            if(!user.categories) return
             await AsyncStorage.setItem('x-select-categories', '1');
             navigation.navigate('HomeLayout');
             dispatch(select());

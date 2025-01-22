@@ -85,7 +85,7 @@ const ProfileScreen = () => {
                     <Text className="font-Comfortaa mt-auto  ">История</Text>
                 </TouchableOpacity>
             </View>
-            <TouchableOpacity
+            <TouchableOpacity onPress={()=>{navigation.navigate("UpdateTopicScreen")}}
                 className="rounded-3xl p-5 flex flex-row items-center shandow bg-white mx-[8px] mt-3"
                 style={[{ minWidth: Dimensions.get('window').width / 2 - 32 }, mixins.shadow]}
             >
