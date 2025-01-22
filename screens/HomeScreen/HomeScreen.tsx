@@ -112,7 +112,7 @@ const HomeScreen = () => {
                             <Skeleton style={{width: 100, height: 11, marginTop: 11}}/>
                         </View>
                     )) : 
-                        recomendations.length == 0 || recError ?
+                        !recomendations || recomendations.length == 0 || recError ?
                             <View className='flex flex-col w-screen my-[16px] items-center justify-center'>
                                 <ErrorIcon width={24} height={24}/>
                                 <Text className='font-ComfortaaBold text-lg'>Ошибка</Text>
