@@ -16,9 +16,11 @@ const [selected, setSelected] = useState ([])
 const url = 'http://92.252.240.206:3000'
 
 const updateCategoriesHandler = async () => {
-    await updateCategories(selected)
-    refetch()
+    await updateCategories(selected).then(() => {refetch()})
 }
+
+console.log(updateError)
+
 useEffect(() => {
     if(error) return
     if(isLoading) return
@@ -35,7 +37,7 @@ useEffect(() => {
                 <View
                     className={`flex flex-row flex-wrap flex-1 mt-5 justify-center ${categoriesLoading && 'gap-5 mt-5'}`}
                 >
-                    {categoriesLoading ? (
+                    {categoriesLoading || !categories ? (
                         <>
                             <Skeleton
                                 style={{
