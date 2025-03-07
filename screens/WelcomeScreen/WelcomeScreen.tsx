@@ -1,6 +1,6 @@
 import { ImageBackground, StatusBar, Text, View } from 'react-native';
 import ComSafeAreaView from '../../shared/ComSafeAreaView/ComSafeAreaView';
-import DarkLogo from '../../assets/DarkLogo.svg';
+import DarkLogo from '../../assets/logo.png';
 import WelcomeBG from '../../assets/testBgWelcome.png';
 import ComButton from '../../shared/ComButton/ComButton';
 import { useEffect } from 'react';
@@ -10,6 +10,7 @@ import { Image } from 'react-native';
 const WelcomeScreen = () => {
     useEffect(() => {
         StatusBar.setBackgroundColor('#8E97FD', true);
+        
     }, []);
     const navigation = useNavigation<StackNavigation>();
     navigation.addListener('beforeRemove', () => {
@@ -24,7 +25,7 @@ const WelcomeScreen = () => {
                     <Text className="font-Comfortaa min-w-[102px] mr-[8px] text-white">
                         Ментальный
                     </Text>
-                    <DarkLogo width={30} height={30} />
+                    <Image source={DarkLogo} className='h-[30px] w-[30px]'/>
                     <Text className="font-Comfortaa min-w-[102px] ml-[8px] text-white">
                         Помощник
                     </Text>

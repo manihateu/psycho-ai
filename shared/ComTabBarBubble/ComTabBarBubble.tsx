@@ -3,7 +3,7 @@ import React from 'react';
 import { View, Text, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
 import Animated, { useSharedValue, useAnimatedStyle, withTiming } from 'react-native-reanimated';
 import Svg, { Path } from 'react-native-svg';
-const BubbleTabBar = ({ title, iconJSX, onPress, selected, maxWidth }) => {
+const BubbleTabBar = ({ title, iconJSX, onPress, selected, maxWidth }: { title: string, iconJSX: React.JSX.Element, onPress: () => void, selected: boolean, maxWidth?: number }) => {
     const circleSize = useSharedValue(50)
     const circleTextOpacity = useSharedValue(0)
     const WIDTH = maxWidth || 150

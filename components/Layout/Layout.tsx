@@ -9,7 +9,7 @@ import {
     TouchableOpacity,
     View,
 } from 'react-native';
-import Logo from '../../assets/logo.svg';
+import Logo from '../../assets/logo.png';
 import LogoBtn from '../../assets/LogoBtn.svg';
 import Profile from '../../assets/Profile.svg';
 import Music from '../../assets/Music.svg';
@@ -20,6 +20,7 @@ import { StackNavigation } from '../RootNavigator/RootNavigator';
 import { mixins } from '../../constans';
 import Back from '../../assets/arrow-left.svg';
 import BubbleTabBar from '../../shared/ComTabBarBubble/ComTabBarBubble';
+import { Image } from 'react-native';
 
 type TLayoutProps = {
     children?: any;
@@ -50,7 +51,7 @@ const Layout = ({ children, canBack, noBottom, selected, setSelectedPage }: TLay
                     </TouchableOpacity>
                 )}
                 <Text className="font-Comfortaa min-w-[102px] mr-[8px]">Ментальный</Text>
-                <Logo width={30} height={30} />
+                <Image source={Logo} className='w-[30px] h-[30px]'/>
                 <Text className="font-Comfortaa min-w-[102px] ml-[8px]">Помощник</Text>
             </View>
             <ImageBackground source={LayoutBg} className="flex-1 w-full bg-white">

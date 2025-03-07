@@ -4,11 +4,11 @@
         "slug": "psycho-ai",
         "version": "1.0.0",
         "orientation": "portrait",
-        "icon": "./assets/newlogo.png",
+        "icon": "./assets/logo.png",
         "userInterfaceStyle": "light",
         "newArchEnabled": true,
         "splash": {
-            "image": "./assets/newlogo.png",
+            "image": "./assets/logo.png",
             "resizeMode": "contain",
             "backgroundColor": "#ffffff"
         },
@@ -17,15 +17,23 @@
         },
         "android": {
             "adaptiveIcon": {
-                "foregroundImage": "./assets/newlogo.png",
+                "foregroundImage": "./assets/logo.png",
                 "backgroundColor": "#ffffff"
             },
             "package": "com.manihateu.psychoai"
         },
         "web": {
-            "favicon": "./assets/newlogo.png"
+            "favicon": "./assets/logo.png"
         },
-        "plugins": ["expo-font"],
+        "plugins": ["expo-font", [
+            "expo-notifications",
+            {
+                "icon": "./assets/logo.png",
+                "color": "#ffffff",
+                "defaultChannel": "default",
+                "enableBackgroundRemoteNotifications": false
+            }
+        ]],
         "extra": {
             "eas": {
                 "projectId": "dcebdadc-9a46-414b-bf39-a5b68b39286c"

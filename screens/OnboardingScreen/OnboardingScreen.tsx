@@ -3,7 +3,7 @@ import { Button, Image, ImageBackground, Pressable, StatusBar, Text } from 'reac
 import { View } from 'react-native';
 import ComSafeAreaView from '../../shared/ComSafeAreaView/ComSafeAreaView';
 import OnboardingLogo from '../../assets/OnboardingLogo.png';
-import Logo from '../../assets/newlogo.png';
+import Logo from '../../assets/logo.png';
 import Icocehadron from '../../assets/Icosahedron.png'
 import Cone from '../../assets/Cone.png'
 import Helix from '../../assets/Helix.png'
@@ -67,7 +67,7 @@ const OnboardingScreen = () => {
                     className='border-2 rounded-full p-[70px] relative border-[#ECECEC]'>
                     <View className='border-2 rounded-full p-[70px] relative border-[#ECECEC]'>
                         <View className='border-2 rounded-full p-[70px] border-[#ECECEC]'>
-                            <Image source={Logo} className='rounded-xl'/>
+                            <Image source={Logo} className='rounded-xl w-[64px] h-[64px] '/>
                         </View>
                         <Image source={Icocehadron} className='absolute top-[-35px] left-[130px] w-[70px] h-[70px]'/>
                         <Image source={Cone} className='absolute top-[15px] left-[245px] w-[70px] h-[70px]'/>

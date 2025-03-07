@@ -173,8 +173,8 @@ const SignUpScreen = () => {
                         }}
                         name="password"
                     />
-                    <View className="mt-[20px] flex flex-row justify-between">
-                        <Text className="font-Comfortaa">
+                    <View className="mt-[20px] flex flex-row justify-between ">
+                        <Text className="font-Comfortaa text-xs">
                             Я прочитал(а){' '}
                             <Text className="text-[#7583CA]">Правила использования</Text>
                         </Text>

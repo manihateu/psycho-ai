@@ -44,7 +44,7 @@ const ProfileScreen = () => {
                         <Edit width={32} height={32} style={{ marginLeft: 'auto' }} />
                     </View>
                     <Text className="font-Comfortaa mt-3">{!isLoading && data.name}</Text>
-                    <Text className="font-Comfortaa mt-3">{!isLoading && data.email}</Text>
+                    {/* <Text className="font-Comfortaa mt-3">{!isLoading && data.email}</Text> */}
                 </TouchableOpacity>
                 <View
                     className="rounded-3xl p-3 shandow bg-white bg-[#8E97FD] flex justify-center"
@@ -72,7 +72,7 @@ const ProfileScreen = () => {
                     ]}
                 >
                     <Like width={32} height={32} style={{ marginLeft: 'auto' }} />
-                    <Text className="font-Comfortaa mt-auto ">Понравившиеся</Text>
+                    <Text className="font-Comfortaa mt-auto ">Понравилось</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                     className="rounded-3xl p-3 shandow bg-white "
