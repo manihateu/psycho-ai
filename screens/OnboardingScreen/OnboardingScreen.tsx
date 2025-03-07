@@ -18,6 +18,7 @@ import { ComAnimatedAppearance } from '../../shared/ComAnimatedAppearance/ComAni
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigation } from '../../components/RootNavigator/RootNavigator';
 import LinearGradient from 'react-native-linear-gradient';
+import { mixins } from '../../constans';
 
 const OnboardingScreen = () => {
     const { navigate } = useNavigation<StackNavigation>();
@@ -80,7 +81,7 @@ const OnboardingScreen = () => {
                     </View>
                 </View>
             </View>
-            <ComAnimatedAppearance className="flex-1 justify-center">
+            <ComAnimatedAppearance classNames="flex-1 justify-center m-3 rounded-3xl bg-white" style={{...mixins.shadow }}>
                     <View className="flex items-center">
                         <Text className="font-Comfortaa text-2xl">Начни работу с себя</Text>
                     </View>

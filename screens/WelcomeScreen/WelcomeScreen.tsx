@@ -1,4 +1,4 @@
-import { ImageBackground, StatusBar, Text, View } from 'react-native';
+import { ImageBackground, SafeAreaView, StatusBar, Text, View } from 'react-native';
 import ComSafeAreaView from '../../shared/ComSafeAreaView/ComSafeAreaView';
 import DarkLogo from '../../assets/logo.png';
 import WelcomeBG from '../../assets/testBgWelcome.png';
@@ -7,50 +7,36 @@ import { useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigation } from '../../components/RootNavigator/RootNavigator';
 import { Image } from 'react-native';
+import { ComAnimatedAppearance } from '../../shared/ComAnimatedAppearance/ComAnimatedAppearance';
 const WelcomeScreen = () => {
-    useEffect(() => {
-        StatusBar.setBackgroundColor('#8E97FD', true);
-        
-    }, []);
     const navigation = useNavigation<StackNavigation>();
-    navigation.addListener('beforeRemove', () => {
-        StatusBar.setBackgroundColor('#FFFFFF', true);
-    });
     return (
-        <ComSafeAreaView className="bg-[#8E97FD]">
+        <SafeAreaView className="bg-[#8E97FD]">
             <View className="h-full">
-                <View
-                    className={`w-full flex p-3 flex-row items-center mt-[${StatusBar.currentHeight ? 50 - StatusBar.currentHeight : 30}px] justify-center`}
-                >
-                    <Text className="font-Comfortaa min-w-[102px] mr-[8px] text-white">
-                        Ментальный
-                    </Text>
-                    <Image source={DarkLogo} className='h-[30px] w-[30px]'/>
-                    <Text className="font-Comfortaa min-w-[102px] ml-[8px] text-white">
-                        Помощник
-                    </Text>
-                </View>
-                <View className="w-full px-[11px] mt-[45px]">
-                    <Text className="font-Comfortaa text-white text-[30px] text-center">
-                        Добро пожаловать в Ментальный помощник
-                    </Text>
-                    <Text className="mt-[40px] font-Comfortaa text-white text-[16px] text-center">
-                        Пользуйтесь нашим приложением и получайте ментальную помощь и разгрузку
-                    </Text>
-                </View>
                 <Image source={WelcomeBG} className='w-full h-1/2 my-auto'/>
-                <View className="mt-auto mb-5 w-full px-[22px]">
-                    <ComButton
-                        onPress={() => {
-                            navigation.navigate('ChooseTopicScreen');
-                        }}
-                        title="Начнем!"
-                        variant="secondary"
-                        size="medium"
-                    />
-                </View>
+                <ComAnimatedAppearance classNames='bg-white m-3 rounded-3xl py-3 gap-y-5'>
+                    <View className="w-full px-[11px]">
+                        <Text className="font-Comfortaa text-xl text-center">
+                            Добро пожаловать в Ментальный помощник
+                        </Text>
+                        <Text className="font-Comfortaa text-[16px] text-center">
+                            Пользуйтесь нашим приложением и получайте ментальную помощь и разгрузку
+                        </Text>
+                    </View>
+                    <View className="mt-auto w-full px-[22px]">
+                        <ComButton
+                            onPress={() => {
+                                navigation.navigate('ChooseTopicScreen');
+                            }}
+                            title="Начнем!"
+                            variant="secondary"
+                            size="medium"
+                        />
+                    </View>
+                </ComAnimatedAppearance>
+                
             </View>
-        </ComSafeAreaView>
+        </SafeAreaView>
     );
 };
 

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import SpinerSVG from '../../assets/logo.svg';
+import SpinerSVG from '../../assets/logo.png';
 import Animated, {
     cancelAnimation,
     Easing,
@@ -8,6 +8,7 @@ import Animated, {
     withRepeat,
     withTiming,
 } from 'react-native-reanimated';
+import { Image } from 'react-native';
 
 const Loader = () => {
     const rotation = useSharedValue(0);
@@ -35,7 +36,7 @@ const Loader = () => {
 
     return (
         <Animated.View style={animatedStyles}>
-            <SpinerSVG width={24} height={24} />
+            <Image source={SpinerSVG} className='w-[30px] h-[30px]'/>
         </Animated.View>
     );
 };

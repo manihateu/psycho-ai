@@ -44,10 +44,9 @@ const ProfileScreen = () => {
                         <Edit width={32} height={32} style={{ marginLeft: 'auto' }} />
                     </View>
                     <Text className="font-Comfortaa mt-3">{!isLoading && data.name}</Text>
-                    {/* <Text className="font-Comfortaa mt-3">{!isLoading && data.email}</Text> */}
                 </TouchableOpacity>
                 <View
-                    className="rounded-3xl p-3 shandow bg-white bg-[#8E97FD] flex justify-center"
+                    className="rounded-3xl p-3 shandow bg-white bg-[#15919B] flex justify-center"
                     style={[{ minWidth: Dimensions.get('window').width / 2 - 16 }, mixins.shadow]}
                 >
                     <View className="flex flex-row justify-center">

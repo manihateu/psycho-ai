@@ -40,9 +40,7 @@ const LoginScreen = () => {
         handleSubmit,
         formState: { errors },
         trigger,
-    } = useForm<LoginSchemaData>({
-        resolver: zodResolver(LoginSchema),
-    });
+    } = useForm<LoginSchemaData>();
 
     const onSubmit = handleSubmit(async (_data) => {
         try {
@@ -87,25 +85,14 @@ const LoginScreen = () => {
                         control={control}
                         name="email"
                         render={({ field: { onChange, onBlur, value } }) => {
-                            const hasError = Boolean(errors.email);
                             return (
                                 <>
                                     <ComInput
                                         placeholder="Email"
-                                        onChange={(text) => {
-                                            setIsEmailChaged(true);
-                                            onChange(text);
-                                            trigger('email');
-                                        }}
+                                        onChange={onChange}
                                         value={value}
-                                        isAccepted={isEmailChaged ? !hasError : false}
                                         classNames="mt-5"
                                     />
-                                    {hasError && (
-                                        <Text className="text-red-500 mt-2">
-                                            {errors.email?.message || 'Некорректный email'}
-                                        </Text>
-                                    )}
                                 </>
                             );
                         }}
@@ -121,13 +108,8 @@ const LoginScreen = () => {
                                 <>
                                     <ComInput
                                         placeholder="Пароль"
-                                        onChange={(text) => {
-                                            setPasswordChaged(true);
-                                            onChange(text);
-                                            trigger('password');
-                                        }}
+                                        onChange={onChange}
                                         value={value}
-                                        isAccepted={isPasswordChaged ? !hasError : false}
                                         classNames="mt-5"
                                         isPassword
                                     />
