@@ -8,7 +8,7 @@ import {
     ViewProps,
     ViewStyle,
 } from 'react-native';
-import { SafeAreaView } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 type TComSafeAreaViewProps = {
     children: React.ReactNode;

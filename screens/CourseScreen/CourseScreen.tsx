@@ -9,11 +9,13 @@ import Play from '../../assets/Play.svg';
 import React from 'react';
 import { useRoute } from '@react-navigation/native';
 import { useGetCourseByIdQuery } from '../../store/api/courses.api';
+import ComSafeAreaView from '../../shared/ComSafeAreaView/ComSafeAreaView';
+import AudioPlayer from '../../shared/AudioPlayer/AudioPlayer';
 
 const CourseScreen = ({}) => {
     const {params} = useRoute()
     const {data, isLoading, error} = useGetCourseByIdQuery(params ? params.id : 0)
-    console.log(params.id)
+    console.log(data)
     return isLoading ? 
         <>
             <Text>Loading</Text>
@@ -22,8 +24,8 @@ const CourseScreen = ({}) => {
         error ?
             <Text>Error</Text>
             :
-            <>
-            <View className="absolute flex flex-row items-center top-[20px] right-[20px] z-[999] gap-x-2">
+            <ComSafeAreaView className='relative'>
+                <View className="absolute flex flex-row items-center top-[20px] right-[20px] z-[999] gap-x-2">
                     <TouchableOpacity
                         className="p-[20px] rounded-full"
                         style={{ backgroundColor: 'rgba(3, 23, 76, 0.5)' }}
@@ -37,7 +39,7 @@ const CourseScreen = ({}) => {
                         <Download width={18} height={18} className="opacity-[1]" />
                     </TouchableOpacity>
                 </View>
-                <Image source={{uri: data?.cardBgUrl}} className="w-full rounded-b-xl" />
+                <Image source={{uri: "https://psycho-ai.dev.developercup.tech" + data?.cardBgUrl}} className="w-full rounded-b-xl" />
                 <View className="px-[20px] mt-3">
                     <Text className="text-[34px] font-Comfortaa mb-[15px]">{data?.name}</Text>
                     <Text className="text-[14px] font-Comfortaa text-[#A1A4B2] uppercase mb-[20px]">
@@ -58,30 +60,19 @@ const CourseScreen = ({}) => {
                     </View>
                     
                     <ScrollView className='mt-3'>
-                        <View className="flex flex-row">
-                            <TouchableOpacity className="p-[14px] rounded-full border flex items-center justify-center">
-                                <Play width={12} height={12} />
-                            </TouchableOpacity>
-                            <View className="ml-[20px] flex flex-col">
-                                <Text className="font-Comfortaa">Фокус</Text>
-                                <Text className="font-Comfortaa">10 МИН</Text>
-                            </View>
-                        </View>
-                        <View className="h-[0.5] mx-3 bg-[#ADB8D9] my-3"></View>
+                        {
+                            data?.audioFiles && data?.audioFiles.map(file => 
+                                <>
+                                    <AudioPlayer file={file} audioId={file.id} courseId={params.id}/>
+                                    <View className="h-[0.5] mx-3 bg-[#ADB8D9] mt-3"></View>
+                                </>
+                            )
+                        }
 
-                        <View className="flex flex-row">
-                            <TouchableOpacity className="p-[14px] rounded-full border flex items-center justify-center">
-                                <Play width={12} height={12} />
-                            </TouchableOpacity>
-                            <View className="ml-[20px] flex flex-col">
-                                <Text className="font-Comfortaa">Фокус</Text>
-                                <Text className="font-Comfortaa">10 МИН</Text>
-                            </View>
-                        </View>
-                        <View className="h-[0.5] mx-3 bg-[#ADB8D9] mt-3"></View>
+                        
                     </ScrollView>
                 </View>
-        </>
+        </ComSafeAreaView>
 }
 
 export default CourseScreen

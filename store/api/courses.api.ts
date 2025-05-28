@@ -10,7 +10,7 @@ const coursesAPi = authorizeApiSlice.injectEndpoints({
         query: (id: number) => ({ url: `/courses/${id}` })
       }),
       getRecomendations: builder.query({
-        query: (limit: number) => ({ url: `/recomendation?limit=${limit}` })
+        query: (limit: number) => ({ url: `/courses` })
       }),
       likeCourse: builder.mutation({
         query: (courseId: number) => ({ 

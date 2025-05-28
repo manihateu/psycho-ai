@@ -132,7 +132,7 @@ const HomeScreen = () => {
                             :
                             recomendations.map((recomendation: TCourse) => (
                                 <TouchableOpacity className="mx-[8px]" onPress={() => {navigation.navigate("CourseScreen", {id: recomendation.id})}}>
-                                    <Image source={{uri: recomendation.cardLogoUrl}} className={`w-[162px] h-[115px] rounded-xl bg-[${recomendation.cardLogoBgColor}]`} />
+                                    <Image source={{uri: "https://psycho-ai.dev.developercup.tech" + recomendation.cardLogoUrl}} className={`w-[162px] h-[115px] rounded-xl bg-[${recomendation.cardLogoBgColor}]`} />
                                     <Text className="mt-[11px] font-Comfortaa">{recomendation.name}</Text>
                                     <Text className=" font-Comfortaa text-[#A1A4B2]">{recomendation.type} {recomendation.timeFrom}-{recomendation.timeTo} МИН</Text>
                                 </TouchableOpacity>
